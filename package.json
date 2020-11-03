@@ -1,0 +1,19 @@
+{
+  "name": "covid-sbg",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "update": "node ./src/update.js",
+    "csv": "node ./src/csv.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Stefan Hofer",
+  "license": "ISC",
+  "dependencies": {
+    "dayjs": "^1.9.4",
+    "html-table-to-json": "^1.0.0",
+    "puppeteer": "^5.4.1"
+  }
+}

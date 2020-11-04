@@ -1,7 +1,7 @@
 name: Update Job
 on:
   schedule:
-    - cron: '0 * * * *'
+    - cron: '40 * * * *'
 
 jobs:
   update:
@@ -31,6 +31,6 @@ jobs:
           author_name: Stefan Hofer
           author_email: stefan.hofer@me.com
           message: "Automatically updated data"
-          add: "data/*.json"
+          add: "data/"
         env:
-          GITHUB_TOKEN: ${{ secrets.COMMIT_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

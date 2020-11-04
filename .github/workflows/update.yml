@@ -1,12 +1,14 @@
 name: Update Job
 on:
-  schedule:
-    - cron: '40 * * * *'
+  push:
+    branches:
+      - master
 
 jobs:
   update:
     name: Update data
     runs-on: ubuntu-latest
+    timeout-minutes: 5
     steps:
       - uses: actions/checkout@v1
       - uses: actions/setup-node@v1
@@ -25,12 +27,18 @@ jobs:
         run: |
           npm run csv
 
-      - name: Commit changes
-        uses: EndBug/add-and-commit@v5
-        with:
-          author_name: Stefan Hofer
-          author_email: stefan.hofer@me.com
-          message: "Automatically updated data"
-          add: "data/"
+      - name: show files
+        run: |
+          ls -alh
+          ls data -alh
+          ls report -alh
+
+      - name: Commit report
+        run: |
+          git config --global user.name 'Stefan Hofer'
+          git config --global user.email 'stefan.hofer@me.com'
+          git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
+          git commit -am "Automated commit"
+          git push
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

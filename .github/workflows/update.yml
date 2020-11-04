@@ -1,8 +1,7 @@
 name: Update Job
 on:
-  push:
-    branches:
-      - master
+  schedule:
+    - cron: '0 * * * *'
 
 jobs:
   update:

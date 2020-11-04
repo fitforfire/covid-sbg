@@ -1,0 +1,36 @@
+name: Update Job
+on:
+  schedule:
+    - cron: '*/15 * * * *'
+
+jobs:
+  update:
+    name: Update data
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - uses: actions/setup-node@v1
+        with:
+          node-version: '12.x'
+
+      - name: Install and Build
+        run: |
+          npm install
+
+      - name: update data
+        run: |
+          npm run update
+
+      - name: generate csv
+        run: |
+          npm run csv
+
+      - name: Commit changes
+        uses: EndBug/add-and-commit@v5
+        with:
+          author_name: Stefan Hofer
+          author_email: stefan.hofer@me.com
+          message: "Automatically updated data"
+          add: "data/*.json"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

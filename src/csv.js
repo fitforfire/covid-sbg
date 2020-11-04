@@ -19,7 +19,7 @@ function getRows(type = 'aktiv') {
     return rows;
 }
 
-['gesamt', 'aktiv', 'genesen', 'gestorben'].forEach(type => {
+['gesamt', 'aktiv', 'genesen', 'verstorben'].forEach(type => {
     const csv = toCSV(getRows(type));
     fs.writeFileSync(`report/${type}.csv`, csv);
 });

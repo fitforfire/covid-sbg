@@ -12,6 +12,7 @@ async function getDistrictData(browser, name, url) {
     const page = await browser.newPage()
     await page.goto(url)
     await page.waitForSelector('.ueber')
+    await page.waitForSelector('p')
     let tableHTML = await page.evaluate(() => document.querySelector('.ueber').parentElement.parentElement.innerHTML);
     const time = await page.evaluate(() => document.querySelector('p').innerText.split(": ")[1]);
 

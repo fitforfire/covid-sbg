@@ -1,13 +1,13 @@
 name: Update Job
 on:
   schedule:
-    - cron: '0 * * * *'
+    - cron: '0 10-18 * * *'
 
 jobs:
   update:
     name: Update data
     runs-on: ubuntu-latest
-    timeout-minutes: 5
+    timeout-minutes: 2
     steps:
       - uses: actions/checkout@v1
       - uses: actions/setup-node@v1
@@ -37,7 +37,8 @@ jobs:
           git config --global user.name 'Stefan Hofer'
           git config --global user.email 'stefan.hofer@me.com'
           git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
-          git commit -am "Automated commit"
+          git add data/*
+          git commit -am "Date update commit"
           git push origin HEAD:master
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

@@ -4,8 +4,11 @@ const {loadData, getTowns, getDistricts, getRow, getTimestamps} = require('./uti
 const data = loadData();
 const districts = getDistricts(data);
 
-function toCSV(rows) {
+function toTSV(rows) {
     return rows.map(row => row.join("\t")).join("\n");
+}
+function toCSV(rows) {
+    return rows.map(row => row.join(",")).join("\n");
 }
 
 function getRows(type = 'aktiv') {
@@ -20,6 +23,9 @@ function getRows(type = 'aktiv') {
 }
 
 ['gesamt', 'aktiv', 'genesen', 'verstorben'].forEach(type => {
-    const csv = toCSV(getRows(type));
+    const rows = getRows(type);
+    const csv = toCSV(rows);
     fs.writeFileSync(`report/${type}.csv`, csv);
+    const tsv = toTSV(rows);
+    fs.writeFileSync(`report/${type}.tsv`, tsv);
 });

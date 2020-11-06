@@ -1,7 +1,7 @@
 name: Update Job
 on:
   schedule:
-    - cron: '0 10-18 * * *'
+    - cron: '0 9-17 * * *'
 
 jobs:
   update:
@@ -26,6 +26,10 @@ jobs:
         run: |
           npm run csv
 
+      - name: generate json
+        run: |
+          npm run json
+
       - name: show files
         run: |
           ls -alh
@@ -34,8 +38,8 @@ jobs:
 
       - name: Commit report
         run: |
-          git config --global user.name 'Stefan Hofer'
-          git config --global user.email 'stefan.hofer@me.com'
+          git config --global user.name 'Github Action Update Job'
+          git config --global user.email 'info@122.co.at'
           git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
           git add data/*
           git commit -am "Date update commit"

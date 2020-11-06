@@ -6,6 +6,7 @@
   "scripts": {
     "update": "node ./src/update.js",
     "csv": "node ./src/csv.js",
+    "json": "node ./src/json.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],

@@ -11,19 +11,20 @@ function toCSV(rows) {
     return rows.map(row => row.join(",")).join("\n");
 }
 
-function getRows(type = 'aktiv') {
+function getRows(type = 'aktiv', districts) {
     const rows = [["Gemeinde", ...getTimestamps(data)]];
     districts.forEach(d => {
         const towns = getTowns(data, d);
+        const prefix = districts.lenght > 1 ? d + " / " : '';
         towns.forEach(t => {
-            rows.push([d + " / " + t, ... getRow(data, d, t).map(d => d[type])])
+            rows.push([prefix + t, ... getRow(data, d, t).map(d => d[type])])
         });
     });
     return rows;
 }
 
 ['gesamt', 'aktiv', 'genesen', 'verstorben'].forEach(type => {
-    const rows = getRows(type);
+    const rows = getRows(type, districts);
     const csv = toCSV(rows);
     fs.writeFileSync(`report/${type}.csv`, csv);
     const tsv = toTSV(rows);

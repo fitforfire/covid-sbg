@@ -6,7 +6,7 @@ const customParseFormat = require('dayjs/plugin/customParseFormat')
 const districts = require('./districts');
 dayjs.extend(customParseFormat)
 
-const dateFormat = "MM.DD.YYYY HH:mm:ss";
+const dateFormat = "DD.MM.YYYY HH:mm:ss";
 
 async function getDistrictData(browser, name, url) {
     const page = await browser.newPage()

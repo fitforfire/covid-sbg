@@ -4,10 +4,6 @@ const {loadData, getTowns, getDistricts} = require('./util');
 const data = loadData();
 const districts = getDistricts(data);
 
-console.log(data);
-
-console.log(districts);
-
 const json = {};
 districts.forEach((d) => {
     json[d] = {};
@@ -23,5 +19,4 @@ districts.forEach((d) => {
     });
 });
 
-console.log(json);
-fs.writeFileSync(`report/gesamt.json`, JSON.stringify(json, null, 2));
+fs.writeFileSync(`docs/report/gesamt.json`, JSON.stringify(json, null, 2));

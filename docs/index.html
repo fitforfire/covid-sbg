@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="utf-8"/>
+    <link rel="stylesheet" href="./css/main.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.bundle.min.js" integrity="sha256-eA+ych7t31OjiXs3fYU0iWjn9HvXMiCLmunP2Gpghok=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/preact@10.5.5/dist/preact.min.js" integrity="sha256-H5EKohEN0dTf2tYGyjVmk5Q1tixTMRC1YSZu6722k+A=" crossorigin="anonymous"></script>
+    <script src="./js/chart.js"></script>
+</head>
+<section>
+    <h1>
+        Covid-19: Aktuelle Situation in Salzburg
+    </h1>
+    <p>
+        Automatisch generierte graphische Representation der Daten aus dem COVID-19 Dashboard des Landes Salzburg.
+    </p>
+    <p>
+        Datenquelle:
+        <a href="https://www.salzburg.gv.at/api5/datalinq/report/kribe@offentlichuebersicht@offentlichuebersicht">https://www.salzburg.gv.at/api5/datalinq/report/kribe@offentlichuebersicht@offentlichuebersicht</a>
+    </p>
+    <p>
+        Programmcode:
+        <a href="https://github.com/fitforfire/covid-sbg/">https://github.com/fitforfire/covid-sbg/</a>
+    </p>
+</section>
+<section>
+    <h2>Aktive Pinzgau</h2>
+    <canvas id="Pinzgau"></canvas>
+</section>
+<section>
+    <h2>Aktive Tennengau</h2>
+    <canvas id="Tennengau"></canvas>
+</section>
+<section>
+    <h2>Aktive Pongau</h2>
+    <canvas id="Pongau"></canvas>
+</section>
+<section>
+    <h2>Aktive Lungau</h2>
+    <canvas id="Lungau"></canvas>
+</section>
+<section>
+    <h2>Aktive Flachgau</h2>
+    <canvas id="Flachgau"></canvas>
+</section>
+<section>
+    <h2>Aktive Salzburg Stadt</h2>
+    <canvas id="Salzburg Stadt"></canvas>
+</section>
+
+<section>
+    <h3>Impressum</h3>
+    <p>
+        <b>Betreiber der Webseite:</b><br>
+        Verein: Team122.at<br>
+        Kellau 198<br>
+        AT- 5431 Kuchl/Salzburg<br>
+        info@122.co.at<br>
+        +43 6604 122 122<br>
+        Rechtsform: Verein<br>
+        Vereinssitz: Kuchl<br>
+        ZVR-Zahl 1080728609<br>
+        Behörde gem. ECG (E-Commerce Gesetz): Bezirkshauptmannschaft Hallein<br>
+    </p>
+</section>
+<script>
+
+    fetch("./report/gesamt.json").then(response => response.json()).then(gesamt => {
+        Object.keys(gesamt).forEach(district => {
+            const type = 'aktiv';
+            initChart(gesamt, district, type);
+        });
+    });
+</script>
+
+</html>

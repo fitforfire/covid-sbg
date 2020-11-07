@@ -26,7 +26,7 @@ function getRows(type = 'aktiv', districts) {
 ['gesamt', 'aktiv', 'genesen', 'verstorben'].forEach(type => {
     const rows = getRows(type, districts);
     const csv = toCSV(rows);
-    fs.writeFileSync(`report/${type}.csv`, csv);
+    fs.writeFileSync(`docs/report/${type}.csv`, csv);
     const tsv = toTSV(rows);
-    fs.writeFileSync(`report/${type}.tsv`, tsv);
+    fs.writeFileSync(`docs/report/${type}.tsv`, tsv);
 });

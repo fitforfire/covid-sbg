@@ -1,7 +1,7 @@
 name: Update Job
 on:
   schedule:
-    - cron: '0 9-17 * * *'
+    - cron: '10 9-17 * * *'
 
 jobs:
   update:
@@ -34,7 +34,7 @@ jobs:
         run: |
           ls -alh
           ls data -alh
-          ls report -alh
+          ls docs/report -alh
 
       - name: Commit report
         run: |

@@ -1,3 +1,22 @@
 a {
     word-wrap: break-word;
 }
+
+section {
+    margin-bottom: 20px;
+}
+
+nav a {
+    margin-right: 10px;
+}
+
+@media (max-width:980px) {
+    nav a {
+        font-size: 30px;
+    }
+}
+
+#impress {
+    padding-top: 30px;
+    font-size: 12px;
+}

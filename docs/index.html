@@ -3,7 +3,8 @@
 <head>
     <meta charset="utf-8"/>
     <title>COVID-19: Aktuelle Situation in Salzburg</title>
-    <link rel="stylesheet" href="./css/main.css?v=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/main.css?v=4" />
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.bundle.min.js"
             integrity="sha256-eA+ych7t31OjiXs3fYU0iWjn9HvXMiCLmunP2Gpghok=" crossorigin="anonymous"></script>
 
@@ -11,10 +12,9 @@
             integrity="sha256-H5EKohEN0dTf2tYGyjVmk5Q1tixTMRC1YSZu6722k+A=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/preact-router@3.2.1/dist/preact-router.min.js"></script>
     <script src="https://unpkg.com/history@4.6.1/umd/history.min.js"></script>
-    <script src="./js/chart.js?v=1"></script>
-    <script src="./js/structure.js?v=1"></script>
+    <script src="./js/chart.js?v=4"></script>
+    <script src="./js/structure.js?v=4"></script>
 </head>
-
 
 <section>
     <h1>
@@ -24,17 +24,19 @@
         Automatisch generierte graphische Repräsentation der Daten aus dem COVID-19 Dashboard des Landes Salzburg. 
     </p>
     <p>
-        Datenquelle:
+        <b>Datenquelle:</b><br/>
         <a href="https://www.salzburg.gv.at/api5/datalinq/report/kribe@offentlichuebersicht@offentlichuebersicht">https://www.salzburg.gv.at/api5/datalinq/report/kribe@offentlichuebersicht@offentlichuebersicht</a>
     </p>
     <p>
-        Programmcode:
+        <b>Programmcode:</b><br/>
         <a href="https://github.com/fitforfire/covid-sbg/">https://github.com/fitforfire/covid-sbg/</a>
     </p>
     <p>
-       Hinweis: Durch einen Klick auf einzelne Ortsnamen in der Legende - können diese ein- bzw. ausgeblendet werden.
+        <b>Hinweis:</b><br/>
+        Durch einen Klick auf einzelne Ortsnamen in der Legende - können diese ein- bzw. ausgeblendet werden.
     </p>    
 </section>
+
 <section id="preact"></section>
 
 <section id="impress">

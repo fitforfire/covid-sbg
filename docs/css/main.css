@@ -7,13 +7,14 @@ section {
 }
 
 nav a {
-    margin-right: 10px;
+    display: inline-block;
+    margin-right: 15px;
+    margin-bottom: 10px;
+    word-wrap: normal;
 }
 
-@media (max-width:980px) {
-    nav a {
-        font-size: 30px;
-    }
+nav a:after {
+    content: " ";
 }
 
 #impress {

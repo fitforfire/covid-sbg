@@ -13,6 +13,7 @@ const DistrictNav = (props) => {
     return h('div', {},
         h('h2', {}, 'Bezirk auswählen'),
         h('nav', {},
+            h(Link, {href: '/district/Flachgau'}, 'Flachgau'),
             h(Link, {href: '/district/Lungau'}, 'Lungau'),
             h(Link, {href: '/district/Pinzgau'}, 'Pinzgau'),
             h(Link, {href: '/district/Pongau'}, 'Pongau'),

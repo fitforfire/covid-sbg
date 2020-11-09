@@ -2,100 +2,22 @@
   "meta": {
     "timestamp": {
       "update": "2020-11-09T08:49:20.000Z",
-      "crawl": 1604913595594
+      "crawl": 1604917463997
     }
   },
   "data": {
-    "Tennengau": {
-      "Tennengau": {
-        "gesamt": "1574",
-        "genesen": "1030",
-        "verstorben": "8",
-        "aktiv": "536"
+    "Salzburg Stadt": {
+      "Salzburg Stadt": {
+        "gesamt": "2159",
+        "genesen": "1148",
+        "verstorben": "4",
+        "aktiv": "1007"
       },
-      "Abtenau": {
-        "gesamt": "182",
-        "genesen": "106",
-        "verstorben": "0",
-        "aktiv": "76"
-      },
-      "Adnet": {
-        "gesamt": "107",
-        "genesen": "81",
+      "Stadt Salzburg - Nicht zugeordnet": {
+        "gesamt": "117",
+        "genesen": "53",
         "verstorben": "1",
-        "aktiv": "25"
-      },
-      "Annaberg-Lungötz": {
-        "gesamt": "22",
-        "genesen": "9",
-        "verstorben": "0",
-        "aktiv": "13"
-      },
-      "Golling an der Salzach": {
-        "gesamt": "113",
-        "genesen": "76",
-        "verstorben": "0",
-        "aktiv": "37"
-      },
-      "Hallein": {
-        "gesamt": "418",
-        "genesen": "245",
-        "verstorben": "1",
-        "aktiv": "172"
-      },
-      "Krispl": {
-        "gesamt": "34",
-        "genesen": "21",
-        "verstorben": "0",
-        "aktiv": "13"
-      },
-      "Kuchl": {
-        "gesamt": "358",
-        "genesen": "282",
-        "verstorben": "2",
-        "aktiv": "74"
-      },
-      "Oberalm": {
-        "gesamt": "68",
-        "genesen": "44",
-        "verstorben": "1",
-        "aktiv": "23"
-      },
-      "Puch bei Hallein": {
-        "gesamt": "93",
-        "genesen": "57",
-        "verstorben": "1",
-        "aktiv": "35"
-      },
-      "Rußbach am Pass Gschütt": {
-        "gesamt": "8",
-        "genesen": "3",
-        "verstorben": "0",
-        "aktiv": "5"
-      },
-      "Sankt Koloman": {
-        "gesamt": "54",
-        "genesen": "35",
-        "verstorben": "1",
-        "aktiv": "18"
-      },
-      "Scheffau am Tennengebirge": {
-        "gesamt": "29",
-        "genesen": "19",
-        "verstorben": "0",
-        "aktiv": "10"
-      },
-      "Bad Vigaun": {
-        "gesamt": "62",
-        "genesen": "38",
-        "verstorben": "0",
-        "aktiv": "24"
-      },
-      "Tennengau - Nicht zugeordnet": {
-        "gesamt": "26",
-        "genesen": "14",
-        "verstorben": "1",
-        "aktiv": "11"
+        "aktiv": "63"
       }
     },
     "Pongau": {
@@ -364,20 +286,6 @@
         "genesen": "15",
         "verstorben": "0",
         "aktiv": "4"
-      }
-    },
-    "Salzburg Stadt": {
-      "Salzburg Stadt": {
-        "gesamt": "2159",
-        "genesen": "1148",
-        "verstorben": "4",
-        "aktiv": "1007"
-      },
-      "Stadt Salzburg - Nicht zugeordnet": {
-        "gesamt": "117",
-        "genesen": "53",
-        "verstorben": "1",
-        "aktiv": "63"
       }
     },
     "Flachgau": {
@@ -796,6 +704,98 @@
         "genesen": "5",
         "verstorben": "0",
         "aktiv": "10"
+      }
+    },
+    "Tennengau": {
+      "Tennengau": {
+        "gesamt": "1574",
+        "genesen": "1030",
+        "verstorben": "8",
+        "aktiv": "536"
+      },
+      "Abtenau": {
+        "gesamt": "182",
+        "genesen": "106",
+        "verstorben": "0",
+        "aktiv": "76"
+      },
+      "Adnet": {
+        "gesamt": "107",
+        "genesen": "81",
+        "verstorben": "1",
+        "aktiv": "25"
+      },
+      "Annaberg-Lungötz": {
+        "gesamt": "22",
+        "genesen": "9",
+        "verstorben": "0",
+        "aktiv": "13"
+      },
+      "Golling an der Salzach": {
+        "gesamt": "113",
+        "genesen": "76",
+        "verstorben": "0",
+        "aktiv": "37"
+      },
+      "Hallein": {
+        "gesamt": "418",
+        "genesen": "245",
+        "verstorben": "1",
+        "aktiv": "172"
+      },
+      "Krispl": {
+        "gesamt": "34",
+        "genesen": "21",
+        "verstorben": "0",
+        "aktiv": "13"
+      },
+      "Kuchl": {
+        "gesamt": "358",
+        "genesen": "282",
+        "verstorben": "2",
+        "aktiv": "74"
+      },
+      "Oberalm": {
+        "gesamt": "68",
+        "genesen": "44",
+        "verstorben": "1",
+        "aktiv": "23"
+      },
+      "Puch bei Hallein": {
+        "gesamt": "93",
+        "genesen": "57",
+        "verstorben": "1",
+        "aktiv": "35"
+      },
+      "Rußbach am Pass Gschütt": {
+        "gesamt": "8",
+        "genesen": "3",
+        "verstorben": "0",
+        "aktiv": "5"
+      },
+      "Sankt Koloman": {
+        "gesamt": "54",
+        "genesen": "35",
+        "verstorben": "1",
+        "aktiv": "18"
+      },
+      "Scheffau am Tennengebirge": {
+        "gesamt": "29",
+        "genesen": "19",
+        "verstorben": "0",
+        "aktiv": "10"
+      },
+      "Bad Vigaun": {
+        "gesamt": "62",
+        "genesen": "38",
+        "verstorben": "0",
+        "aktiv": "24"
+      },
+      "Tennengau - Nicht zugeordnet": {
+        "gesamt": "26",
+        "genesen": "14",
+        "verstorben": "1",
+        "aktiv": "11"
       }
     }
   }

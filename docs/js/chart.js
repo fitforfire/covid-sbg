@@ -1,4 +1,4 @@
-const colors = ['#e6194b', '#3cb44b', '#ffe119', '#4363d8', '#f58231', '#911eb4', '#46f0f0', '#f032e6', '#bcf60c', '#fabebe', '#008080', '#e6beff', '#9a6324', '#fffac8', '#800000', '#aaffc3', '#808000', '#ffd8b1', '#000075', '#808080', '#ffffff', '#000000'];
+const colors = ['#e6194b', '#3cb44b', '#ffe119', '#4363d8', '#f58231', '#911eb4', '#46f0f0', '#f032e6', '#bcf60c', '#fabebe', '#008080', '#e6beff', '#9a6324', '#fffac8', '#800000', '#aaffc3', '#808000', '#ffd8b1', '#000075', '#808080', '#000000'];
 
 const typeColors = {
     'gesamt': '#ffe119',
@@ -18,14 +18,16 @@ function destroy() {
     }
 }
 
-function buildDistrictChart(gesamt, district, type) {
+function buildDistrictChart(towns, district, type, population, showRelativeValues = false) {
     const datasets = [];
-    Object.keys(gesamt[district]).forEach((town, i) => {
+    Object.keys(towns).forEach((town, i) => {
         const data = [];
-        Object.keys(gesamt[district][town][type]).map((date, x) => {
+        Object.keys(towns[town][type]).map((date, x) => {
+            let y = parseInt(towns[town][type][date]);
+            y = showRelativeValues ? Math.round(y / population[town] * 100000) : y;
             data.push({
                 x: date,
-                y: parseInt(gesamt[district][town][type][date])
+                y
             });
         });
         datasets.push({
@@ -57,14 +59,14 @@ function buildDistrictChart(gesamt, district, type) {
 }
 
 
-function buildTownChart(gesamt, id) {
+function buildTownChart(town, id) {
     const datasets = [];
-    Object.keys(gesamt).forEach((type, i) => {
+    Object.keys(town).forEach((type, i) => {
         const data = [];
-        Object.keys(gesamt[type]).map((date, x) => {
+        Object.keys(town[type]).map((date, x) => {
             data.push({
                 x: date,
-                y: parseInt(gesamt[type][date])
+                y: parseInt(town[type][date])
             });
         });
         datasets.push({

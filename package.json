@@ -11,7 +11,7 @@
   },
   "keywords": [],
   "author": "Stefan Hofer",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "dayjs": "^1.9.4",
     "html-table-to-json": "^1.0.0",

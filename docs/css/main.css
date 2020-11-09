@@ -1,3 +1,7 @@
+body {
+    margin: 10px;
+}
+
 a {
     word-wrap: break-word;
 }
@@ -20,4 +24,9 @@ nav a:after {
 #impress {
     padding-top: 30px;
     font-size: 12px;
+}
+
+.pure-button-active {
+    background: #0078e7;
+    color: white;
 }

@@ -2,31 +2,49 @@ const {Component, h, render} = window.preact;
 const {Router, Route, Link} = window.preactRouter;
 const {createHashHistory} = window.History;
 
+const getLink = ({district, town, showRelativeValues}) => {
+    let link = `/district/${district}`;
+    if (town) {
+        link += `/town/${town}`;
+    }
+    if (!town && showRelativeValues) {
+        link += '/relative'
+    }
+    return link;
+}
+
 const TownNav = (props) => {
     return (h('div', {},
         h('h3', {}, "Details für Gemeinden:"),
-        h('nav', {}, props.towns.map(town => (h(Link, {href: `/district/${props.district}/town/${town}`}, town))))
+        h('nav', {}, h('div', {className: 'pure-button-group', role: 'group'},
+            props.towns.map(town => (h(Link, {href: getLink({district: props.district, town, showRelativeValues: props.showRelativeValues})}, h('button', {className: `pure-button${props.active === town ? ' pure-button-active' : ''}` }, town))))
+        ))
     ));
 }
 
-const DistrictNav = (props) => {
+const ModeNav = ({district, town, showRelativeValues}) => {
+    return district && h('nav', {}, h('div', {className: 'pure-button-group', role: 'group'},
+        h(Link, {href: getLink({district, town})}, h('button', {className: `pure-button${!showRelativeValues ? ' pure-button-active' : ''}` }, 'Absolute Zahlen')),
+        h(Link, {href: getLink({district, town, showRelativeValues: true})}, h('button', {className: `pure-button${showRelativeValues ? ' pure-button-active' : ''}` }, 'Relative Zahlen'))
+    ))
+}
+
+const DistrictNav = ({active, showRelativeValues}) => {
+    const districts = ['Flachgau', 'Lungau', 'Pinzgau', 'Pongau', 'Tennengau', 'Salzburg Stadt']
     return h('div', {},
         h('h2', {}, 'Bezirk auswählen'),
-        h('nav', {},
-            h(Link, {href: '/district/Flachgau'}, 'Flachgau'),
-            h(Link, {href: '/district/Lungau'}, 'Lungau'),
-            h(Link, {href: '/district/Pinzgau'}, 'Pinzgau'),
-            h(Link, {href: '/district/Pongau'}, 'Pongau'),
-            h(Link, {href: '/district/Tennengau'}, 'Tennengau'),
-            h(Link, {href: '/district/Salzburg Stadt'}, 'Salzbug Stadt')
-        )
+        h('nav', {}, h('div', {className: 'pure-button-group', role: 'group'},
+            districts.map(d => h(Link, {href: getLink({district: d, showRelativeValues})}, h('button', {className: `pure-button${active === d ? ' pure-button-active' : ''}` }, d))),
+        ))
     );
 }
+
+
 
 class District extends Component {
 
     buildChart() {
-        buildDistrictChart(this.props.gesamt, this.props.district, 'aktiv');
+        buildDistrictChart(this.props.timeseries[this.props.district], this.props.district, 'aktiv', this.props.population, this.props.showRelativeValues);
     }
 
     componentDidMount() {
@@ -38,13 +56,14 @@ class District extends Component {
     }
 
     render(props, state) {
-        const towns = this.props.gesamt && Object.keys(this.props.gesamt[props.district]);
+        const towns = this.props.timeseries && Object.keys(this.props.timeseries[props.district]);
         return (
             h('section', {},
-                h(DistrictNav, {}),
-                h('h2', {}, `Aktive Fälle ${props.district}`),
+                h(DistrictNav, {active: props.district, showRelativeValues: props.showRelativeValues}),
+                h(ModeNav, {district: props.district, showRelativeValues: props.showRelativeValues}),
+                h('h2', {}, props.showRelativeValues ? `Aktive Fälle pro 100.000 Einwohner für ${props.district}` : `Aktive Fälle ${props.district}`),
                 h('canvas', {id: props.district}),
-                h(TownNav, {towns, district: props.district})
+                h(TownNav, {towns, district: props.district, showRelativeValues: props.showRelativeValues})
             )
         )
     }
@@ -53,7 +72,7 @@ class District extends Component {
 class Town extends Component {
 
     buildChart() {
-        buildTownChart(this.props.gesamt[this.props.district][this.props.town], "city");
+        buildTownChart(this.props.timeseries[this.props.district][this.props.town], "city");
     }
 
     componentDidMount() {
@@ -65,13 +84,13 @@ class Town extends Component {
     }
 
     render(props, state) {
-        const towns = this.props.gesamt && Object.keys(this.props.gesamt[props.district]);
+        const towns = this.props.timeseries && Object.keys(this.props.timeseries[props.district]);
         return (
             h('section', {},
-                h(DistrictNav, {}),
+                h(DistrictNav, {active: props.district}),
                 h('h2', {}, `Details für ${props.town}`),
                 h('canvas', {id: 'city'}),
-                h(TownNav, {towns, district: props.district})
+                h(TownNav, {towns, district: props.district, active: props.town})
             )
         )
     }
@@ -79,19 +98,23 @@ class Town extends Component {
 
 class Main extends Component {
     componentDidMount() {
-        fetch("./report/gesamt.json").then(response => response.json()).then(gesamt => {
+        Promise.all([
+            fetch("./report/gesamt.json").then(response => response.json()),
+            fetch("./report/population.json").then(response => response.json())
+        ]).then(([timeseries, population]) => {
             this.setState({
-                gesamt
+                timeseries, population
             });
-        });
+        })
     }
 
     render() {
         return (h('div', {},
 
-            this.state.gesamt && h(Router, {history: createHashHistory()},
-            h(Town, {path: '/district/:district/town/:town', gesamt: this.state.gesamt}),
-            h(District, {path: '/district/:district', gesamt: this.state.gesamt}),
+            this.state.timeseries && h(Router, {history: createHashHistory()},
+            h(Town, {path: '/district/:district/town/:town', timeseries: this.state.timeseries, showRelativeValues: false}),
+            h(District, {path: '/district/:district', timeseries: this.state.timeseries, population: this.state.population, showRelativeValues: false}),
+            h(District, {path: '/district/:district/relative', timeseries: this.state.timeseries, population: this.state.population, showRelativeValues: true}),
             h(DistrictNav, {default: true})
             )));
     }

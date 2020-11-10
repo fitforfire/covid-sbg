@@ -3,12 +3,18 @@ const {Router, Route, Link} = window.preactRouter;
 const {createHashHistory} = window.History;
 
 const getLink = ({district, town, showRelativeValues}) => {
-    let link = `/district/${district}`;
+    let link = '';
+    if (district) {
+        link += `/district/${district}`;
+    }
     if (town) {
         link += `/town/${town}`;
     }
     if (!town && showRelativeValues) {
         link += '/relative'
+    }
+    if (link === '') {
+        return '/';
     }
     return link;
 }
@@ -23,9 +29,12 @@ const TownNav = (props) => {
 }
 
 const ModeNav = ({district, town, showRelativeValues}) => {
-    return district && h('nav', {}, h('div', {className: 'pure-button-group', role: 'group'},
-        h(Link, {href: getLink({district, town})}, h('button', {className: `pure-button${!showRelativeValues ? ' pure-button-active' : ''}` }, 'Absolute Zahlen')),
-        h(Link, {href: getLink({district, town, showRelativeValues: true})}, h('button', {className: `pure-button${showRelativeValues ? ' pure-button-active' : ''}` }, 'Relative Zahlen'))
+    return h('div', {},
+            h('h3', {}, 'Zahlenmodus'),
+            h('nav', {}, h('div', {className: 'pure-button-group', role: 'group'},
+            h(Link, {href: getLink({district, town})}, h('button', {className: `pure-button${!showRelativeValues ? ' pure-button-active' : ''}` }, 'Absolute Zahlen')),
+            h(Link, {href: getLink({district, town, showRelativeValues: true})}, h('button', {className: `pure-button${showRelativeValues ? ' pure-button-active' : ''}` }, 'Relative Zahlen'))
+        )
     ))
 }
 
@@ -34,6 +43,7 @@ const DistrictNav = ({active, showRelativeValues}) => {
     return h('div', {},
         h('h2', {}, 'Bezirk auswählen'),
         h('nav', {}, h('div', {className: 'pure-button-group', role: 'group'},
+            h(Link, {href: getLink({showRelativeValues})}, h('button', {className: `pure-button${active === undefined ? ' pure-button-active' : ''}` }, 'Übersicht')),
             districts.map(d => h(Link, {href: getLink({district: d, showRelativeValues})}, h('button', {className: `pure-button${active === d ? ' pure-button-active' : ''}` }, d))),
         ))
     );
@@ -96,6 +106,32 @@ class Town extends Component {
     }
 }
 
+class Overview extends Component {
+
+    buildChart() {
+        buildOverviewChart(this.props.timeseries, "aktiv", this.props.population, this.props.showRelativeValues);
+    }
+
+    componentDidMount() {
+        this.buildChart();
+    }
+
+    componentDidUpdate() {
+        this.buildChart();
+    }
+
+    render(props, state) {
+        return (
+            h('section', {},
+                h(DistrictNav, {showRelativeValues: props.showRelativeValues}),
+                h(ModeNav, {district: props.district, showRelativeValues: props.showRelativeValues}),
+                h('h2', {}, props.showRelativeValues ? `Aktive Fälle pro 100.000 Einwohner pro Bezirk` : `Aktive Fälle pro Bezirk`),
+                h('canvas', {id: 'overview'}),
+            )
+        )
+    }
+}
+
 class Main extends Component {
     componentDidMount() {
         Promise.all([
@@ -108,14 +144,20 @@ class Main extends Component {
         })
     }
 
+    handleRoute = e => {
+        _paq.push(['setCustomUrl', e.url]);
+        _paq.push(['trackPageView']);
+    };
+
     render() {
         return (h('div', {},
 
-            this.state.timeseries && h(Router, {history: createHashHistory()},
+            this.state.timeseries && h(Router, {history: createHashHistory(), onChange: this.handleRoute},
             h(Town, {path: '/district/:district/town/:town', timeseries: this.state.timeseries, showRelativeValues: false}),
             h(District, {path: '/district/:district', timeseries: this.state.timeseries, population: this.state.population, showRelativeValues: false}),
             h(District, {path: '/district/:district/relative', timeseries: this.state.timeseries, population: this.state.population, showRelativeValues: true}),
-            h(DistrictNav, {default: true})
+            h(Overview, {path: '/relative', timeseries: this.state.timeseries, population: this.state.population, showRelativeValues: true}),
+            h(Overview, {default: true, timeseries: this.state.timeseries, population: this.state.population, showRelativeValues: false}),
             )));
     }
 };

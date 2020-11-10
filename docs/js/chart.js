@@ -18,6 +18,43 @@ function destroy() {
     }
 }
 
+function buildOverviewChart(districts, type, population, showRelativeValues = false) {
+    const datasets = [];
+    Object.keys(districts).forEach((district, i) => {
+        const data = [];
+        Object.keys(districts[district][district][type]).map((date, x) => {
+            let y = parseInt(districts[district][district][type][date]);
+            y = showRelativeValues ? Math.round(y / population[district] * 100000) : y;
+            data.push({
+                x: date,
+                y
+            });
+        });
+        datasets.push({
+            label: district,
+            data: data,
+            borderColor: colors[i % colors.length],
+            backgroundColor: 'transparent',
+            hidden: false,
+        })
+    });
+    const ctx = document.getElementById('overview');
+    destroy();
+    chart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: datasets[0].data.map(d => d.x.split("T")[0]),
+            datasets
+        },
+        options: {
+            legend: {
+                position: isMobile() ? 'bottom' : 'left'
+            },
+            aspectRatio: isMobile() ? 0.5 : 2
+        }
+    });
+}
+
 function buildDistrictChart(towns, district, type, population, showRelativeValues = false) {
     const datasets = [];
     Object.keys(towns).forEach((town, i) => {

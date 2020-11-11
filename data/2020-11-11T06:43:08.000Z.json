@@ -2,7 +2,7 @@
   "meta": {
     "timestamp": {
       "update": "2020-11-11T06:43:08.000Z",
-      "crawl": 1605107907502
+      "crawl": 1605112191556
     }
   },
   "data": {
@@ -332,110 +332,6 @@
         "genesen": "17",
         "verstorben": "1",
         "aktiv": "10"
-      }
-    },
-    "Lungau": {
-      "Lungau": {
-        "gesamt": "424",
-        "genesen": "203",
-        "verstorben": "1",
-        "aktiv": "220"
-      },
-      "Göriach": {
-        "gesamt": "9",
-        "genesen": "1",
-        "verstorben": "0",
-        "aktiv": "8"
-      },
-      "Lessach": {
-        "gesamt": "2",
-        "genesen": "1",
-        "verstorben": "0",
-        "aktiv": "1"
-      },
-      "Mariapfarr": {
-        "gesamt": "57",
-        "genesen": "30",
-        "verstorben": "0",
-        "aktiv": "27"
-      },
-      "Mauterndorf": {
-        "gesamt": "26",
-        "genesen": "9",
-        "verstorben": "0",
-        "aktiv": "17"
-      },
-      "Muhr": {
-        "gesamt": "1",
-        "genesen": "0",
-        "verstorben": "0",
-        "aktiv": "1"
-      },
-      "Ramingstein": {
-        "gesamt": "21",
-        "genesen": "6",
-        "verstorben": "0",
-        "aktiv": "15"
-      },
-      "Sankt Andrä im Lungau": {
-        "gesamt": "13",
-        "genesen": "5",
-        "verstorben": "0",
-        "aktiv": "8"
-      },
-      "Sankt Margarethen im Lungau": {
-        "gesamt": "8",
-        "genesen": "4",
-        "verstorben": "0",
-        "aktiv": "4"
-      },
-      "Sankt Michael im Lungau": {
-        "gesamt": "82",
-        "genesen": "36",
-        "verstorben": "1",
-        "aktiv": "45"
-      },
-      "Tamsweg": {
-        "gesamt": "100",
-        "genesen": "53",
-        "verstorben": "0",
-        "aktiv": "47"
-      },
-      "Thomatal": {
-        "gesamt": "4",
-        "genesen": "1",
-        "verstorben": "0",
-        "aktiv": "3"
-      },
-      "Tweng": {
-        "gesamt": "6",
-        "genesen": "5",
-        "verstorben": "0",
-        "aktiv": "1"
-      },
-      "Unternberg": {
-        "gesamt": "19",
-        "genesen": "5",
-        "verstorben": "0",
-        "aktiv": "14"
-      },
-      "Weißpriach": {
-        "gesamt": "3",
-        "genesen": "3",
-        "verstorben": "0",
-        "aktiv": "0"
-      },
-      "Zederhaus": {
-        "gesamt": "54",
-        "genesen": "29",
-        "verstorben": "0",
-        "aktiv": "25"
-      },
-      "Lungau - Nicht zugeordnet": {
-        "gesamt": "19",
-        "genesen": "15",
-        "verstorben": "0",
-        "aktiv": "4"
       }
     },
     "Pinzgau": {
@@ -796,6 +692,110 @@
         "genesen": "56",
         "verstorben": "0",
         "aktiv": "25"
+      }
+    },
+    "Lungau": {
+      "Lungau": {
+        "gesamt": "424",
+        "genesen": "203",
+        "verstorben": "1",
+        "aktiv": "220"
+      },
+      "Göriach": {
+        "gesamt": "9",
+        "genesen": "1",
+        "verstorben": "0",
+        "aktiv": "8"
+      },
+      "Lessach": {
+        "gesamt": "2",
+        "genesen": "1",
+        "verstorben": "0",
+        "aktiv": "1"
+      },
+      "Mariapfarr": {
+        "gesamt": "57",
+        "genesen": "30",
+        "verstorben": "0",
+        "aktiv": "27"
+      },
+      "Mauterndorf": {
+        "gesamt": "26",
+        "genesen": "9",
+        "verstorben": "0",
+        "aktiv": "17"
+      },
+      "Muhr": {
+        "gesamt": "1",
+        "genesen": "0",
+        "verstorben": "0",
+        "aktiv": "1"
+      },
+      "Ramingstein": {
+        "gesamt": "21",
+        "genesen": "6",
+        "verstorben": "0",
+        "aktiv": "15"
+      },
+      "Sankt Andrä im Lungau": {
+        "gesamt": "13",
+        "genesen": "5",
+        "verstorben": "0",
+        "aktiv": "8"
+      },
+      "Sankt Margarethen im Lungau": {
+        "gesamt": "8",
+        "genesen": "4",
+        "verstorben": "0",
+        "aktiv": "4"
+      },
+      "Sankt Michael im Lungau": {
+        "gesamt": "82",
+        "genesen": "36",
+        "verstorben": "1",
+        "aktiv": "45"
+      },
+      "Tamsweg": {
+        "gesamt": "100",
+        "genesen": "53",
+        "verstorben": "0",
+        "aktiv": "47"
+      },
+      "Thomatal": {
+        "gesamt": "4",
+        "genesen": "1",
+        "verstorben": "0",
+        "aktiv": "3"
+      },
+      "Tweng": {
+        "gesamt": "6",
+        "genesen": "5",
+        "verstorben": "0",
+        "aktiv": "1"
+      },
+      "Unternberg": {
+        "gesamt": "19",
+        "genesen": "5",
+        "verstorben": "0",
+        "aktiv": "14"
+      },
+      "Weißpriach": {
+        "gesamt": "3",
+        "genesen": "3",
+        "verstorben": "0",
+        "aktiv": "0"
+      },
+      "Zederhaus": {
+        "gesamt": "54",
+        "genesen": "29",
+        "verstorben": "0",
+        "aktiv": "25"
+      },
+      "Lungau - Nicht zugeordnet": {
+        "gesamt": "19",
+        "genesen": "15",
+        "verstorben": "0",
+        "aktiv": "4"
       }
     }
   }

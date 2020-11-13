@@ -98,7 +98,9 @@ class Town extends Component {
         return (
             h('section', {},
                 h(DistrictNav, {active: props.district}),
-                h('h2', {}, `Details für ${props.town}`),
+                h('h2', {}, `Details für ${props.town}`,
+                    h('span', {class: 'population'}, ` (${props.population[props.town]} Einwohner)`)
+                ),
                 h('canvas', {id: 'city'}),
                 h(TownNav, {towns, district: props.district, active: props.town})
             )
@@ -144,7 +146,7 @@ class Main extends Component {
         })
     }
 
-    handleRoute = e => {
+    handleRoute(e) {
         _paq.push(['setCustomUrl', e.url]);
         _paq.push(['trackPageView']);
     };
@@ -153,7 +155,7 @@ class Main extends Component {
         return (h('div', {},
 
             this.state.timeseries && h(Router, {history: createHashHistory(), onChange: this.handleRoute},
-            h(Town, {path: '/district/:district/town/:town', timeseries: this.state.timeseries, showRelativeValues: false}),
+            h(Town, {path: '/district/:district/town/:town', timeseries: this.state.timeseries, population: this.state.population, showRelativeValues: false}),
             h(District, {path: '/district/:district', timeseries: this.state.timeseries, population: this.state.population, showRelativeValues: false}),
             h(District, {path: '/district/:district/relative', timeseries: this.state.timeseries, population: this.state.population, showRelativeValues: true}),
             h(Overview, {path: '/relative', timeseries: this.state.timeseries, population: this.state.population, showRelativeValues: true}),

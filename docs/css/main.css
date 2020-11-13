@@ -21,6 +21,10 @@ nav a:after {
     content: " ";
 }
 
+#info {
+    padding-top: 30px;
+}
+
 #impress {
     padding-top: 30px;
     font-size: 12px;
@@ -29,4 +33,8 @@ nav a:after {
 .pure-button-active {
     background: #0078e7;
     color: white;
+}
+
+h2 .population {
+    font-size: smaller;
 }

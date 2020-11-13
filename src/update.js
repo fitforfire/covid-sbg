@@ -49,15 +49,22 @@ async function getDistrictData(browser, name, url) {
         return raw;
     }));
     await browser.close()
-    const now = Date.now()
+
+
+    const orderedData = {};
+    Object.keys(data).sort().forEach(function(key) {
+        orderedData[key] = data[key];
+    });
+
+    const now = new Date();
     const output = JSON.stringify({
         meta: {
             timestamp: {
                 update: updateTime,
-                crawl: now
+                crawl: now.toISOString()
             }
         },
-        data: data
+        data: orderedData
     }, null, 2);
 
     await fs.writeFileSync('data/' + updateTime + '.json', output);

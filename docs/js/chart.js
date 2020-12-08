@@ -114,7 +114,6 @@ function buildTownChart(town, id) {
             hidden: false,
         })
     });
-    datasets[0].hidden = true;
     const ctx = document.getElementById(id);
     destroy();
     chart = new Chart(ctx, {

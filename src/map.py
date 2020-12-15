@@ -1,7 +1,9 @@
+import json
+from datetime import datetime
+
 import geopandas as gpd
 import matplotlib.pyplot as plt
 import pandas as pd
-import json
 
 
 def main():
@@ -14,6 +16,7 @@ def main():
 
     # get Up to date covid Data
     covidData = pd.read_csv(report_dir + 'aktiv.csv').set_index('Gemeinde')
+    last_updated = datetime.strptime(covidData.columns[-1], "%Y-%m-%dT%H:%M:%S.%fZ")
     # rename last column
     covidData.columns = [*covidData.columns[:-1], 'aktiv']
 
@@ -38,7 +41,9 @@ def main():
 
     plot_data = salzburg.join(covid_data)[['relativeActive', 'geometry']]
     plot_data.plot(column='relativeActive', figsize=(20, 10), legend=True)
-    plt.title('Active covid cases in Salzburg per 1.000 Citizen', fontsize=20)
+    plt.axis('off')
+    plt.title('Aktive Fälle in den Salzburger Gemeinden pro 1.000 Einwohner', fontsize=20)
+    plt.suptitle('Stand: ' + last_updated.strftime('%d.%m.%Y %H:%m'))
     plt.savefig(report_dir + "aktiv.png")
 
 

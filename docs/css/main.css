@@ -38,3 +38,7 @@ nav a:after {
 h2 .population {
     font-size: smaller;
 }
+
+img {
+    width: 100%;
+}

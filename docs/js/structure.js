@@ -125,6 +125,7 @@ class Overview extends Component {
     render(props, state) {
         return (
             h('section', {},
+                h('img', {src: 'report/aktiv.png'}),
                 h(DistrictNav, {showRelativeValues: props.showRelativeValues}),
                 h(ModeNav, {district: props.district, showRelativeValues: props.showRelativeValues}),
                 h('h2', {}, props.showRelativeValues ? `Aktive Fälle pro 100.000 Einwohner pro Bezirk` : `Aktive Fälle pro Bezirk`),

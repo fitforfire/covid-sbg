@@ -39,7 +39,7 @@ def main():
     plot_data = salzburg.join(covid_data)[['relativeActive', 'geometry']]
     plot_data.plot(column='relativeActive', figsize=(20, 10), legend=True)
     plt.title('Active covid cases in Salzburg per 1.000 Citizen', fontsize=20)
-    plt.savefig(report_dir + "active.png")
+    plt.savefig(report_dir + "aktiv.png")
 
 
 if __name__ == '__main__':

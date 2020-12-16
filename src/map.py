@@ -36,10 +36,11 @@ def main():
         'Fusch an der Glocknerstraße': 'Fusch an der Großglocknerstraße',
         'Sankt Martin im Tennengebirge': 'Sankt Martin am Tennengebirge',
         'Hollersbach': 'Hollersbach im Pinzgau',
+        'Rußbach am Pass Gschütt': 'Rußbach am Paß Gschütt'
     })
 
     plot_data = salzburg.join(covid_data)[['relativeActive', 'geometry']]
-    plot_data.plot(column='relativeActive', figsize=(20, 10), legend=True)
+    plot_data.plot(column='relativeActive', figsize=(19.2, 10.8), legend=True, legend_kwds={'shrink': 0.8})
     plt.axis('off')
     plt.title('7-Tages-Mittel pro 100.000 Einwohner', fontsize=20)
     plt.suptitle('Stand: ' + last_updated.strftime('%d.%m.%Y %H:%m'))

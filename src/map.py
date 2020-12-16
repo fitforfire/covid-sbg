@@ -15,20 +15,19 @@ def main():
     report_dir = "./docs/report/"
 
     # get Up to date covid Data
-    covidData = pd.read_csv(report_dir + 'aktiv.csv').set_index('Gemeinde')
-    last_updated = datetime.strptime(covidData.columns[-1], "%Y-%m-%dT%H:%M:%S.%fZ")
+    covid_data = pd.read_csv(report_dir + 'aktiv.csv').set_index('Gemeinde')
+    last_updated = datetime.strptime(covid_data.columns[-1], "%Y-%m-%dT%H:%M:%S.%fZ")
     # rename last column
-    covidData.columns = [*covidData.columns[:-1], 'aktiv']
+    covid_data['sevenDaysMean'] = covid_data.iloc[:, -7:].mean(axis=1)
 
     # get Population for relative numbers
     with open(report_dir + "population.json") as population_file:
         population = json.load(population_file)
     population = pd.DataFrame(population, index=["population"]).transpose()
 
-    covid_data = pd.DataFrame(covidData['aktiv'])
     covid_data = covid_data.join(population)
 
-    covid_data['relativeActive'] = covid_data['aktiv'] / covid_data['population'] * 1000
+    covid_data['relativeActive'] = covid_data['sevenDaysMean'] / covid_data['population'] * 100000
 
     # some fixes of city names
     covid_data = covid_data.rename(index={
@@ -42,7 +41,7 @@ def main():
     plot_data = salzburg.join(covid_data)[['relativeActive', 'geometry']]
     plot_data.plot(column='relativeActive', figsize=(20, 10), legend=True)
     plt.axis('off')
-    plt.title('Aktive Fälle in den Salzburger Gemeinden pro 1.000 Einwohner', fontsize=20)
+    plt.title('7-Tages-Mittel pro 100.000 Einwohner', fontsize=20)
     plt.suptitle('Stand: ' + last_updated.strftime('%d.%m.%Y %H:%m'))
     plt.savefig(report_dir + "aktiv.png")
 

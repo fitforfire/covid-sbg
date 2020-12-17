@@ -40,7 +40,7 @@ def main():
     })
 
     plot_data = salzburg.join(covid_data)[['relativeActive', 'geometry']]
-    plot_data.plot(column='relativeActive', figsize=(19.2, 10.8), legend=True, legend_kwds={'shrink': 0.8})
+    plot_data.plot(column='relativeActive', figsize=(14, 10.5), legend=True, legend_kwds={'shrink': 0.8})
     plt.axis('off')
     plt.title('7-Tages-Mittel pro 100.000 Einwohner', fontsize=20)
     plt.suptitle('Stand: ' + last_updated.strftime('%d.%m.%Y %H:%m'))

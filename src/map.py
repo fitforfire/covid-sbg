@@ -1,6 +1,7 @@
 import json
 from datetime import datetime
 
+import contextily as ctx
 import geopandas as gpd
 import matplotlib.pyplot as plt
 import pandas as pd
@@ -39,8 +40,17 @@ def main():
         'Rußbach am Pass Gschütt': 'Rußbach am Paß Gschütt'
     })
 
-    plot_data = salzburg.join(covid_data)[['relativeActive', 'geometry']]
-    plot_data.plot(column='relativeActive', figsize=(14, 10.5), legend=True, legend_kwds={'shrink': 0.8})
+    plot_data = salzburg.join(covid_data)[['relativeActive', 'geometry']].to_crs(epsg=3857)
+    ax = plot_data.plot(
+        column='relativeActive',
+        cmap='Paired',
+        figsize=(14, 10.5),
+        legend=True,
+        legend_kwds={'shrink': 0.8, 'alpha': 0.5},
+        alpha=0.5,
+        edgecolor='k',
+    )
+    ctx.add_basemap(ax, source=ctx.providers.Stamen.TonerLite)
     plt.axis('off')
     plt.title('7-Tages-Mittel pro 100.000 Einwohner', fontsize=20)
     plt.suptitle('zivilschutz.at\nStand: ' + last_updated.strftime('%d.%m.%Y %H:%m'), y=0.95)

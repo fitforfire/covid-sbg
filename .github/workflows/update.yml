@@ -1,7 +1,8 @@
 name: Update Job
 on:
   schedule:
-    - cron: '10 9-17 * * *'
+    - cron: '0 9-17 * * *'
+  workflow_dispatch:
 
 jobs:
   update:
@@ -33,14 +34,14 @@ jobs:
         run: |
           npm run json
 
-      - name: Install python dependencies
-        run: |
-          python -m pip install --upgrade pip
-          pip install -r requirements.txt
+#      - name: Install python dependencies
+#        run: |
+#          python -m pip install --upgrade pip
+#          pip install -r requirements.txt
 
-      - name: generate map
-        run: |
-          python src/map.py
+#      - name: generate map
+#        run: |
+#          python src/map.py
 
       - name: show files
         run: |

@@ -34,10 +34,15 @@ jobs:
         run: |
           npm run json
 
-      - name: Install python dependencies
+      - name: Install GDAL dependencies
         run: |
           sudo apt-get install libgdal-dev gdal-bin python3-gdal python3-numpy --fix-missing --no-install-suggests -y
-          python -m pip install --upgrade pip setuptools wheel numpy
+          export CPLUS_INCLUDE_PATH=/usr/include/gdal
+          export C_INCLUDE_PATH=/usr/include/gdal
+
+      - name: Install python dependencies
+        run: |
+          python -m pip install --upgrade pip setuptools wheel
           python -m pip install gdal==$(gdal-config --version)
           python -m pip install -r requirements.txt
 

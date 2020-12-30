@@ -41,6 +41,9 @@ jobs:
           export C_INCLUDE_PATH=/usr/include/gdal
 
       - name: Install python dependencies
+        env:
+          CPLUS_INCLUDE_PATH: /usr/include/gdal
+          C_INCLUDE_PATH: /usr/include/gdal
         run: |
           python -m pip install --upgrade pip setuptools wheel
           python -m pip install gdal==$(gdal-config --version)

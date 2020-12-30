@@ -38,7 +38,8 @@ jobs:
         run: |
           sudo apt-get install libgdal-dev gdal-bin python3-gdal python3-numpy --fix-missing --no-install-suggests -y
           python -m pip install --upgrade pip setuptools wheel numpy
-          pip install -r requirements.txt
+          python -m pip install gdal==$(gdal-config --version)
+          python -m pip install -r requirements.txt
 
       - name: generate map
         run: |

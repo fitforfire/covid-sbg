@@ -1,7 +1,7 @@
 contextily
 descartes
 Fiona
-GDAL<3.2
+GDAL
 geopandas
 matplotlib
 numpy

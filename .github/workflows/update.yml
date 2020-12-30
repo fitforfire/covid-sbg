@@ -8,7 +8,7 @@ jobs:
   update:
     name: Update data
     runs-on: ubuntu-latest
-    timeout-minutes: 2
+    timeout-minutes: 5
     steps:
       - uses: actions/checkout@v1
       - uses: actions/setup-node@v1
@@ -37,7 +37,7 @@ jobs:
       - name: Install python dependencies
         run: |
           sudo apt-get install libgdal-dev gdal-bin python3-gdal python3-numpy --fix-missing --no-install-suggests -y
-          python -m pip install --upgrade pip setuptools wheel
+          python -m pip install --upgrade pip setuptools wheel numpy
           pip install -r requirements.txt
 
       - name: generate map

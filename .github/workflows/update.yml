@@ -34,14 +34,15 @@ jobs:
         run: |
           npm run json
 
-#      - name: Install python dependencies
-#        run: |
-#          python -m pip install --upgrade pip
-#          pip install -r requirements.txt
+      - name: Install python dependencies
+        run: |
+          sudo apt-get install libgdal-dev --fix-missing --no-install-suggests -y
+          python -m pip install --upgrade pip setuptools wheel
+          pip install -r requirements.txt
 
-#      - name: generate map
-#        run: |
-#          python src/map.py
+      - name: generate map
+        run: |
+          python src/map.py
 
       - name: show files
         run: |

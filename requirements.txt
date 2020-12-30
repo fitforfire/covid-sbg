@@ -1,5 +1,7 @@
 contextily
 descartes
+Fiona
+GDAL
 geopandas
 matplotlib
 numpy

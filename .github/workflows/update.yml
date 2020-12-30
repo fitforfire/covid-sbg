@@ -8,7 +8,7 @@ jobs:
   update:
     name: Update data
     runs-on: ubuntu-latest
-    timeout-minutes: 2
+    timeout-minutes: 5
     steps:
       - uses: actions/checkout@v1
       - uses: actions/setup-node@v1
@@ -34,14 +34,22 @@ jobs:
         run: |
           npm run json
 
-#      - name: Install python dependencies
-#        run: |
-#          python -m pip install --upgrade pip
-#          pip install -r requirements.txt
+      - name: Install GDAL dependencies
+        run: |
+          sudo apt-get install libgdal-dev gdal-bin python3-gdal python3-numpy --fix-missing --no-install-suggests -y
 
-#      - name: generate map
-#        run: |
-#          python src/map.py
+      - name: Install python dependencies
+        env:
+          CPLUS_INCLUDE_PATH: /usr/include/gdal
+          C_INCLUDE_PATH: /usr/include/gdal
+        run: |
+          python -m pip install --upgrade pip setuptools wheel
+          python -m pip install gdal==$(gdal-config --version)
+          python -m pip install -r requirements.txt
+
+      - name: generate map
+        run: |
+          python src/map.py
 
       - name: show files
         run: |

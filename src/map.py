@@ -101,6 +101,7 @@ def create_table(data):
         .bar(subset=table.columns[2], align='zero', color=['#d65f5f', '#5fba7d']) \
         .bar(subset=table.columns[3], align='zero', color='#4d4d4d') \
         .set_precision(2) \
+        .set_uuid('') \
         .render()
 
     with open(report_dir + "table.html", 'w') as f:

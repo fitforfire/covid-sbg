@@ -20,6 +20,10 @@ def main():
     covid_data['sevenDaysMeanYesterday'] = raw_data.iloc[:, -8:-1].mean(axis=1)
     covid_data['sevenDaysMeanChange'] = covid_data['sevenDaysMean'] - covid_data['sevenDaysMeanYesterday']
 
+    # add deaths
+    death_data = pd.read_csv(report_dir + 'verstorben.csv').set_index('Gemeinde')
+    covid_data['Verstorben'] = death_data.iloc[:, -1:]
+
     # get Population for relative numbers
     with open(report_dir + "population.json") as population_file:
         population = json.load(population_file)
@@ -82,7 +86,7 @@ def color_red_green(val):
 
 
 def create_table(data):
-    table = drop_gaue(data)[['relativeActive', 'active', 'activeChange', 'population']]
+    table = drop_gaue(data)[['relativeActive', 'active', 'activeChange', 'Verstorben', 'population']]
 
     table.rename(inplace=True, columns={
         'relativeActive': '7-Tage-Inzidenz',
@@ -95,6 +99,7 @@ def create_table(data):
         .applymap(color_red_green, subset=table.columns[2]) \
         .bar(subset=table.columns[0], align='mid', color='#5fba7d') \
         .bar(subset=table.columns[2], align='zero', color=['#d65f5f', '#5fba7d']) \
+        .bar(subset=table.columns[3], align='zero', color='#4d4d4d') \
         .set_precision(2) \
         .render()
 

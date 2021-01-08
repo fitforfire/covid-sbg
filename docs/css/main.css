@@ -61,7 +61,7 @@ h2 .population {
 }
 
 #dataTable tr:hover {
-    background-color: #ffff99;
+    background-color: #ffff99 !important;
 }
 
 #dataTable tr:nth-child(even) {

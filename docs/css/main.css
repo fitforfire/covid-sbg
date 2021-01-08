@@ -42,3 +42,28 @@ h2 .population {
 #sbgMap {
     max-width: 100%;
 }
+
+#dataTable table {
+    width: 100%;
+}
+
+#dataTable .index_name {
+    display: none;
+}
+
+#dataTable .col_heading,
+#dataTable .data {
+    text-align: right;
+}
+
+#dataTable .row_heading {
+    text-align: left;
+}
+
+#dataTable tr:hover {
+    background-color: #ffff99;
+}
+
+#dataTable tr:nth-child(even) {
+    background-color: #f2f2f2;
+}

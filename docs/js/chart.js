@@ -6,16 +6,31 @@ const typeColors = {
     'genesen': '#3cb44b',
     'verstorben': '#000000'
 }
+
 function isMobile() {
     return window.innerWidth < 980;
 }
 
 let chart;
 
-function destroy() {
+function destroyAndRestore(id, datasets) {
     if (chart) {
         chart.destroy();
     }
+
+    chart = new Chart(document.getElementById(id), {
+        type: 'line',
+        data: {
+            labels: datasets[0].data.map(d => d.x.split("T")[0]),
+            datasets
+        },
+        options: {
+            legend: {
+                position: isMobile() ? 'bottom' : 'left'
+            },
+            aspectRatio: isMobile() ? 0.5 : 2
+        }
+    });
 }
 
 function buildOverviewChart(districts, type, population, showRelativeValues = false) {
@@ -38,21 +53,8 @@ function buildOverviewChart(districts, type, population, showRelativeValues = fa
             hidden: false,
         })
     });
-    const ctx = document.getElementById('overview');
-    destroy();
-    chart = new Chart(ctx, {
-        type: 'line',
-        data: {
-            labels: datasets[0].data.map(d => d.x.split("T")[0]),
-            datasets
-        },
-        options: {
-            legend: {
-                position: isMobile() ? 'bottom' : 'left'
-            },
-            aspectRatio: isMobile() ? 0.5 : 2
-        }
-    });
+
+    destroyAndRestore('overview', datasets);
 }
 
 function buildDistrictChart(towns, district, type, population, showRelativeValues = false) {
@@ -78,21 +80,8 @@ function buildDistrictChart(towns, district, type, population, showRelativeValue
     if (district !== 'Salzburg Stadt') {
         datasets[0].hidden = true;
     }
-    const ctx = document.getElementById(district);
-    destroy();
-    chart = new Chart(ctx, {
-        type: 'line',
-        data: {
-            labels: datasets[0].data.map(d => d.x.split("T")[0]),
-            datasets
-        },
-        options: {
-            legend: {
-                position: isMobile() ? 'bottom' : 'left'
-            },
-            aspectRatio: isMobile() ? 0.5 : 2
-        }
-    });
+
+    destroyAndRestore(district, datasets);
 }
 
 
@@ -114,19 +103,6 @@ function buildTownChart(town, id) {
             hidden: false,
         })
     });
-    const ctx = document.getElementById(id);
-    destroy();
-    chart = new Chart(ctx, {
-        type: 'line',
-        data: {
-            labels: datasets[0].data.map(d => d.x.split("T")[0]),
-            datasets
-        },
-        options: {
-            legend: {
-                position: isMobile() ? 'bottom' : 'left'
-            },
-            aspectRatio: isMobile() ? 0.5 : 2
-        }
-    });
+
+    destroyAndRestore(id, datasets);
 }

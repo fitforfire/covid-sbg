@@ -3,6 +3,7 @@ descartes
 Fiona
 GDAL
 geopandas
+jinja2
 matplotlib
 numpy
 pandas

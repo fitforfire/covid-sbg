@@ -42,3 +42,42 @@ h2 .population {
 #sbgMap {
     max-width: 100%;
 }
+
+#dataTable {
+    width: 100%;
+    overflow-y: auto;
+    margin: 0 0 1em;
+}
+
+#dataTable::-webkit-scrollbar {
+    -webkit-appearance: none;
+    width: 14px;
+    height: 14px;
+}
+
+#dataTable::-webkit-scrollbar-thumb {
+    border-radius: 8px;
+    border: 3px solid #fff;
+    background-color: rgba(0, 0, 0, .3);
+}
+
+#dataTable .index_name {
+    display: none;
+}
+
+#dataTable .col_heading,
+#dataTable .data {
+    text-align: right;
+}
+
+#dataTable .row_heading {
+    text-align: left;
+}
+
+#dataTable tr:hover {
+    background-color: #ffff99 !important;
+}
+
+#dataTable tr:nth-child(even) {
+    background-color: #f2f2f2;
+}

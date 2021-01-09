@@ -14,15 +14,15 @@ def main():
     # get Up to date covid Data
     raw_data = pd.read_csv(report_dir + 'aktiv.csv').set_index('Gemeinde')
     last_updated = datetime.strptime(raw_data.columns[-1], "%Y-%m-%dT%H:%M:%S.%fZ")
-    # rename last column
-    covid_data = pd.DataFrame()
-    covid_data['sevenDaysMean'] = raw_data.iloc[:, -7:].mean(axis=1)
-    covid_data['sevenDaysMeanYesterday'] = raw_data.iloc[:, -8:-1].mean(axis=1)
-    covid_data['sevenDaysMeanChange'] = covid_data['sevenDaysMean'] - covid_data['sevenDaysMeanYesterday']
+
+    # create df
+    covid_data = pd.DataFrame(index=raw_data.index)
+    covid_data['active'] = raw_data.iloc[:, -1:]
+    covid_data['activeYesterday'] = raw_data.iloc[:, -2:-1]
 
     # add deaths
     death_data = pd.read_csv(report_dir + 'verstorben.csv').set_index('Gemeinde')
-    covid_data['Verstorben'] = death_data.iloc[:, -1:]
+    covid_data['death'] = death_data.iloc[:, -1:]
 
     # get Population for relative numbers
     with open(report_dir + "population.json") as population_file:
@@ -40,13 +40,9 @@ def main():
     covid_data = covid_data.join(population.transpose())
     covid_data['population'] = covid_data['population'].fillna(0).astype(int)
 
-    covid_data['relativeActive'] = covid_data['sevenDaysMean'] / covid_data['population'] * 100000
-    covid_data['relativeActiveYesterday'] = covid_data['sevenDaysMeanYesterday'] / covid_data['population'] * 100000
+    covid_data['relativeActive'] = covid_data['active'] / covid_data['population'] * 100000
+    covid_data['relativeActiveYesterday'] = covid_data['activeYesterday'] / covid_data['population'] * 100000
     covid_data['relativeActiveChange'] = covid_data['relativeActive'] - covid_data['relativeActiveYesterday']
-
-    covid_data['active'] = raw_data.iloc[:, -1:]
-    covid_data['activeYesterday'] = raw_data.iloc[:, -2:-1]
-    covid_data['activeChange'] = covid_data['active'] - covid_data['activeYesterday']
 
     # some fixes of city names
     covid_data.rename(inplace=True, index={
@@ -86,21 +82,21 @@ def color_red_green(val):
 
 
 def create_table(data):
-    table = drop_gaue(data)[['relativeActive', 'active', 'activeChange', 'Verstorben', 'population']]
+    table = drop_gaue(data)[['relativeActive', 'relativeActiveChange', 'death', 'population']]
 
     table.rename(inplace=True, columns={
-        'relativeActive': '7-Tage-Inzidenz',
-        'active': 'Aktive Fälle',
-        'activeChange': 'Δ aktive Fälle',
+        'relativeActive': 'Aktive Fälle <wbr>pro 100.000 EW',
+        'relativeActiveChange': 'Δ aktive Fälle <wbr>pro 100.000 EW',
+        'death': 'Verstorben',
         'population': 'Bevölkerung',
     })
 
     html = table.style \
-        .applymap(color_red_green, subset=table.columns[2]) \
+        .applymap(color_red_green, subset=table.columns[1]) \
         .bar(subset=table.columns[0], align='mid', color='#5fba7d') \
-        .bar(subset=table.columns[2], align='zero', color=['#d65f5f', '#5fba7d']) \
-        .bar(subset=table.columns[3], align='zero', color='#4d4d4d') \
-        .set_precision(2) \
+        .bar(subset=table.columns[1], align='zero', color=['#d65f5f', '#5fba7d']) \
+        .bar(subset=table.columns[2], align='zero', color='#4d4d4d') \
+        .set_precision(0) \
         .set_uuid('') \
         .render()
 
@@ -127,7 +123,7 @@ def plot_map(data, last_updated):
     )
     ctx.add_basemap(ax, source=ctx.providers.Stamen.TonerLite)
     plt.axis('off')
-    plt.title('7-Tages-Mittel pro 100.000 Einwohner', fontsize=20)
+    plt.title('Aktive Fälle pro 100.000 Einwohner', fontsize=20)
     plt.suptitle('zivilschutz.at\nStand: ' + last_updated.strftime('%d.%m.%Y %H:%m'), y=0.95)
     plt.savefig(report_dir + "aktiv.png")
 

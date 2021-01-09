@@ -65,9 +65,19 @@ h2 .population {
     display: none;
 }
 
-#dataTable .col_heading,
+#dataTable .col_heading {
+    white-space: nowrap;
+    text-align: right;
+    padding: 0 1rem;
+}
+
 #dataTable .data {
     text-align: right;
+}
+
+#dataTable .data.col1,
+#dataTable .data.col2 {
+    text-align: left;
 }
 
 #dataTable .row_heading {

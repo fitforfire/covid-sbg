@@ -2,6 +2,8 @@ const {Component, h, render} = window.preact;
 const {Router, Route, Link} = window.preactRouter;
 const {createHashHistory} = window.History;
 
+const now = Date.now();
+
 const getLink = ({district, town, showRelativeValues}) => {
     let link = '';
     if (district) {
@@ -129,7 +131,7 @@ class Overview extends Component {
                 h(ModeNav, {district: props.district, showRelativeValues: props.showRelativeValues}),
                 h('h2', {}, props.showRelativeValues ? `Aktive Fälle pro 100.000 Einwohner pro Bezirk` : `Aktive Fälle pro Bezirk`),
                 h('canvas', {id: 'overview'}),
-                h('img', {src: 'report/aktiv.png', id: 'sbgMap'}),
+                h('img', {src: 'report/aktiv.png?v' + now, id: 'sbgMap'}),
                 h('div', {id: 'dataTable', dangerouslySetInnerHTML: {__html: this.props.table}}),
             )
         )
@@ -156,7 +158,6 @@ class Main extends Component {
 
     render() {
         return (h('div', {},
-
             this.state.timeseries && h(Router, {history: createHashHistory(), onChange: this.handleRoute},
             h(Town, {path: '/district/:district/town/:town', timeseries: this.state.timeseries, population: this.state.population, showRelativeValues: false}),
             h(District, {path: '/district/:district', timeseries: this.state.timeseries, population: this.state.population, showRelativeValues: false}),
@@ -165,7 +166,7 @@ class Main extends Component {
             h(Overview, {default: true, timeseries: this.state.timeseries, population: this.state.population, table: this.state.table, showRelativeValues: false}),
             )));
     }
-};
+}
 
 document.addEventListener("DOMContentLoaded", function (event) {
     render(h(Main), document.getElementById('preact'));

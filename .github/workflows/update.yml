@@ -3,12 +3,15 @@ on:
   schedule:
     - cron: '0 9,17 * * *'
   workflow_dispatch:
+  push:
+    branches:
+      - master
 
 jobs:
   update:
     name: Update data
     runs-on: ubuntu-latest
-    timeout-minutes: 5
+    timeout-minutes: 7
     steps:
       - uses: actions/checkout@v1
       - uses: actions/setup-node@v1

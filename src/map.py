@@ -76,7 +76,8 @@ def color_red_green(val):
     the css property `'color: red'` for negative
     strings, black 0 and green for positives.
     """
-    color = '#5fba7d' if val > 0 else 'black' if val == 0 else '#d65f5f'
+    color = 'transparent' if val == 0 else 'black'
+    color = '#d65f5f' if val > 0 else 'transparent' if val == 0 else '#104a10'
 
     return 'color: %s' % color
 
@@ -93,8 +94,9 @@ def create_table(data):
 
     html = table.style \
         .applymap(color_red_green, subset=table.columns[1]) \
+        .format("{:+.0f}", subset=table.columns[1]) \
         .bar(subset=table.columns[0], align='mid', color='#5fba7d') \
-        .bar(subset=table.columns[1], align='zero', color=['#d65f5f', '#5fba7d']) \
+        .bar(subset=table.columns[1], align='zero', color=['#5fba7d', '#d65f5f']) \
         .bar(subset=table.columns[2], align='zero', color='#4d4d4d') \
         .set_precision(0) \
         .set_uuid('') \

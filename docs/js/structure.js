@@ -51,12 +51,37 @@ const DistrictNav = ({active, showRelativeValues}) => {
     );
 }
 
+const Table = ({table}) => {
+    return h('div', {id: 'dataTable', dangerouslySetInnerHTML: {__html: table}});
+}
+
+const updateTable = (timeseries, district = null) => {
+    let rows = document.getElementsByClassName('row_heading');
+    const towns = district ? timeseries && Object.keys(timeseries[district]) : [];
+    let isEven = true;
+
+    Array.from(rows).forEach((row, index) => {
+        if (null !== district) {
+            if (towns.includes(row.innerHTML)) {
+                row.parentNode.classList.remove('hidden');
+                isEven = !isEven;
+            } else {
+                row.parentNode.classList.add('hidden');
+            }
+        } else {
+            isEven = !isEven;
+        }
+
+        row.parentNode.classList.toggle('even', isEven);
+    });
+}
 
 
 class District extends Component {
 
     buildChart() {
         buildDistrictChart(this.props.timeseries[this.props.district], this.props.district, 'aktiv', this.props.population, this.props.showRelativeValues);
+        updateTable(this.props.timeseries, this.props.district);
     }
 
     componentDidMount() {
@@ -75,7 +100,8 @@ class District extends Component {
                 h(ModeNav, {district: props.district, showRelativeValues: props.showRelativeValues}),
                 h('h2', {}, props.showRelativeValues ? `Aktive Fälle pro 100.000 Einwohner für ${props.district}` : `Aktive Fälle ${props.district}`),
                 h('canvas', {id: props.district}),
-                h(TownNav, {towns, district: props.district, showRelativeValues: props.showRelativeValues})
+                h(TownNav, {towns, district: props.district, showRelativeValues: props.showRelativeValues}),
+                h(Table, {table: props.table}),
             )
         )
     }
@@ -114,6 +140,7 @@ class Overview extends Component {
 
     buildChart() {
         buildOverviewChart(this.props.timeseries, "aktiv", this.props.population, this.props.showRelativeValues);
+        updateTable(this.props.timeseries, null);
     }
 
     componentDidMount() {
@@ -132,7 +159,7 @@ class Overview extends Component {
                 h('h2', {}, props.showRelativeValues ? `Aktive Fälle pro 100.000 Einwohner pro Bezirk` : `Aktive Fälle pro Bezirk`),
                 h('canvas', {id: 'overview'}),
                 h('img', {src: 'report/aktiv.png?v' + now, id: 'sbgMap'}),
-                h('div', {id: 'dataTable', dangerouslySetInnerHTML: {__html: this.props.table}}),
+                h(Table, {table: props.table}),
             )
         )
     }
@@ -159,11 +186,40 @@ class Main extends Component {
     render() {
         return (h('div', {},
             this.state.timeseries && h(Router, {history: createHashHistory(), onChange: this.handleRoute},
-            h(Town, {path: '/district/:district/town/:town', timeseries: this.state.timeseries, population: this.state.population, showRelativeValues: false}),
-            h(District, {path: '/district/:district', timeseries: this.state.timeseries, population: this.state.population, showRelativeValues: false}),
-            h(District, {path: '/district/:district/relative', timeseries: this.state.timeseries, population: this.state.population, showRelativeValues: true}),
-            h(Overview, {path: '/relative', timeseries: this.state.timeseries, population: this.state.population, table: this.state.table, showRelativeValues: true}),
-            h(Overview, {default: true, timeseries: this.state.timeseries, population: this.state.population, table: this.state.table, showRelativeValues: false}),
+            h(Town, {
+                path: '/district/:district/town/:town',
+                timeseries: this.state.timeseries,
+                population: this.state.population,
+                showRelativeValues: false
+            }),
+            h(District, {
+                path: '/district/:district',
+                timeseries: this.state.timeseries,
+                population: this.state.population,
+                table: this.state.table,
+                showRelativeValues: false
+            }),
+            h(District, {
+                path: '/district/:district/relative',
+                timeseries: this.state.timeseries,
+                population: this.state.population,
+                table: this.state.table,
+                showRelativeValues: true
+            }),
+            h(Overview, {
+                path: '/relative',
+                timeseries: this.state.timeseries,
+                population: this.state.population,
+                table: this.state.table,
+                showRelativeValues: true
+            }),
+            h(Overview, {
+                default: true,
+                timeseries: this.state.timeseries,
+                population: this.state.population,
+                table: this.state.table,
+                showRelativeValues: false
+            }),
             )));
     }
 }

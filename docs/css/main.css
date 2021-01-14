@@ -88,6 +88,6 @@ h2 .population {
     background-color: #ffff99 !important;
 }
 
-#dataTable tr:nth-child(even) {
+#dataTable tr.even {
     background-color: #f2f2f2;
 }

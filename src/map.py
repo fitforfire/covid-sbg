@@ -44,46 +44,18 @@ def main():
     covid_data['relativeActiveYesterday'] = covid_data['activeYesterday'] / covid_data['population'] * 100000
     covid_data['relativeActiveChange'] = covid_data['relativeActive'] - covid_data['relativeActiveYesterday']
 
-    # some fixes of city names
-    covid_data.rename(inplace=True, index={
-        'Salzburg Stadt': 'Salzburg',
-        'Bruck an der Glocknerstraße': 'Bruck an der Großglocknerstraße',
-        'Fusch an der Glocknerstraße': 'Fusch an der Großglocknerstraße',
-        'Sankt Martin im Tennengebirge': 'Sankt Martin am Tennengebirge',
-        'Hollersbach': 'Hollersbach im Pinzgau',
-        'Rußbach am Pass Gschütt': 'Rußbach am Paß Gschütt'
-    })
-
     create_table(covid_data)
     plot_map(covid_data, last_updated)
 
 
-def drop_gaue(data):
-    data.drop(data.index[data.index.str.endswith('- Nicht zugeordnet', na=False)], inplace=True)
-
-    return data.drop([
-        'Flachgau',
-        'Tennengau',
-        'Pongau',
-        'Pinzgau',
-        'Lungau',
-    ]).sort_index()
-
-
 def color_red_green(val):
-    """
-    Takes a scalar and returns a string with
-    the css property `'color: red'` for negative
-    strings, black 0 and green for positives.
-    """
-    color = 'transparent' if val == 0 else 'black'
     color = '#d65f5f' if val > 0 else 'transparent' if val == 0 else '#104a10'
 
     return 'color: %s' % color
 
 
 def create_table(data):
-    table = drop_gaue(data)[['relativeActive', 'relativeActiveChange', 'death', 'population']]
+    table = data[['relativeActive', 'relativeActiveChange', 'death', 'population']].sort_index()
 
     table.rename(inplace=True, columns={
         'relativeActive': 'Aktive Fälle <wbr>pro 100.000 EW',
@@ -111,6 +83,16 @@ def plot_map(data, last_updated):
     salzburg = gpd.read_file(map_zip)
     # simplify districts
     salzburg = salzburg.dissolve(by='PG')
+
+    # some fixes of city names for map
+    data.rename(inplace=True, index={
+        'Salzburg Stadt': 'Salzburg',
+        'Bruck an der Glocknerstraße': 'Bruck an der Großglocknerstraße',
+        'Fusch an der Glocknerstraße': 'Fusch an der Großglocknerstraße',
+        'Sankt Martin im Tennengebirge': 'Sankt Martin am Tennengebirge',
+        'Hollersbach': 'Hollersbach im Pinzgau',
+        'Rußbach am Pass Gschütt': 'Rußbach am Paß Gschütt'
+    })
 
     plot_data = salzburg.join(data)[['relativeActive', 'geometry']].to_crs(epsg=3857)
 

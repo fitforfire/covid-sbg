@@ -4,10 +4,21 @@ from datetime import datetime
 import contextily as ctx
 import geopandas as gpd
 import matplotlib.pyplot as plt
+from matplotlib.colors import BoundaryNorm, ListedColormap
 import pandas as pd
 
 map_zip = "zip://./src/Salzburg.zip!Salzburg_BEV_VGD_250_LAM.shp"
 report_dir = "./docs/report/"
+
+colors = [
+    '#66bb6a',
+    '#ffee58',
+    '#ff9800',
+    '#ef5350',
+    '#ab47bc',
+    '#4d4d4d',
+    '#b71c1c',
+]
 
 
 def main():
@@ -96,9 +107,15 @@ def plot_map(data, last_updated):
 
     plot_data = salzburg.join(data)[['relativeActive', 'geometry']].to_crs(epsg=3857)
 
+    # cmap
+    cmap = ListedColormap(colors)
+    bounds = [0, 50, 100, 200, 500, 1000]
+    norm = BoundaryNorm(bounds, cmap.N, extend='max')
+
     ax = plot_data.plot(
         column='relativeActive',
-        cmap='Paired',
+        cmap=cmap,
+        norm=norm,
         figsize=(14, 10.5),
         legend=True,
         legend_kwds={'shrink': 0.8, 'alpha': 0.5},

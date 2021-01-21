@@ -1,5 +1,4 @@
 import json
-from datetime import datetime
 
 import contextily as ctx
 import geopandas as gpd
@@ -24,12 +23,17 @@ colors = [
 def main():
     # get Up to date covid Data
     raw_data = pd.read_csv(report_dir + 'aktiv.csv').set_index('Gemeinde')
-    last_updated = datetime.strptime(raw_data.columns[-1], "%Y-%m-%dT%H:%M:%S.%fZ")
+
+    # treat columns as timestamps
+    raw_data.columns = raw_data.columns.map(pd.Timestamp)
+    last_updated = pd.to_datetime(raw_data.columns[-1], utc=True)
+    # column_idx of day before timestamp
+    day_before = raw_data.columns.get_loc(last_updated.replace(hour=0, minute=0), method='pad')
 
     # create df
     covid_data = pd.DataFrame(index=raw_data.index)
     covid_data['active'] = raw_data.iloc[:, -1:]
-    covid_data['activeYesterday'] = raw_data.iloc[:, -2:-1]
+    covid_data['activeYesterday'] = raw_data.iloc[:, day_before]
 
     # add deaths
     death_data = pd.read_csv(report_dir + 'verstorben.csv').set_index('Gemeinde')

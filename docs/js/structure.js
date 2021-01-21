@@ -167,8 +167,9 @@ class Overview extends Component {
 
 class Main extends Component {
     componentDidMount() {
+        const timeseriesSource = isMobile() ? "./report/t14.json" : "./report/t30.json";
         Promise.all([
-            fetch("./report/gesamt.json").then(response => response.json()),
+            fetch(timeseriesSource).then(response => response.json()),
             fetch("./report/population.json").then(response => response.json()),
             fetch("./report/table.html").then(response => response.text()),
         ]).then(([timeseries, population, table]) => {

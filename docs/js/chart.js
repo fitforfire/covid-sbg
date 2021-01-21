@@ -7,10 +7,6 @@ const typeColors = {
     'verstorben': '#000000'
 }
 
-function isMobile() {
-    return window.innerWidth < 980;
-}
-
 let chart;
 
 function destroyAndRestore(id, datasets) {

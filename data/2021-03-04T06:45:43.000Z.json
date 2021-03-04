@@ -1,0 +1,802 @@
+{
+  "meta": {
+    "timestamp": {
+      "update": "2021-03-04T06:45:43.000Z",
+      "crawl": "2021-03-04T09:12:48.790Z"
+    }
+  },
+  "data": {
+    "Flachgau": {
+      "Flachgau": {
+        "gesamt": "9144",
+        "genesen": "8600",
+        "verstorben": "88",
+        "aktiv": "456"
+      },
+      "Anif": {
+        "gesamt": "184",
+        "genesen": "170",
+        "verstorben": "5",
+        "aktiv": "9"
+      },
+      "Anthering": {
+        "gesamt": "183",
+        "genesen": "176",
+        "verstorben": "1",
+        "aktiv": "6"
+      },
+      "Bergheim": {
+        "gesamt": "437",
+        "genesen": "413",
+        "verstorben": "3",
+        "aktiv": "21"
+      },
+      "Berndorf bei Salzburg": {
+        "gesamt": "72",
+        "genesen": "69",
+        "verstorben": "2",
+        "aktiv": "1"
+      },
+      "Bürmoos": {
+        "gesamt": "252",
+        "genesen": "227",
+        "verstorben": "0",
+        "aktiv": "25"
+      },
+      "Dorfbeuern": {
+        "gesamt": "90",
+        "genesen": "75",
+        "verstorben": "2",
+        "aktiv": "13"
+      },
+      "Ebenau": {
+        "gesamt": "74",
+        "genesen": "73",
+        "verstorben": "0",
+        "aktiv": "1"
+      },
+      "Elixhausen": {
+        "gesamt": "158",
+        "genesen": "140",
+        "verstorben": "0",
+        "aktiv": "18"
+      },
+      "Elsbethen": {
+        "gesamt": "200",
+        "genesen": "196",
+        "verstorben": "2",
+        "aktiv": "2"
+      },
+      "Eugendorf": {
+        "gesamt": "392",
+        "genesen": "372",
+        "verstorben": "1",
+        "aktiv": "19"
+      },
+      "Faistenau": {
+        "gesamt": "151",
+        "genesen": "150",
+        "verstorben": "0",
+        "aktiv": "1"
+      },
+      "Fuschl am See": {
+        "gesamt": "101",
+        "genesen": "101",
+        "verstorben": "0",
+        "aktiv": "0"
+      },
+      "Göming": {
+        "gesamt": "84",
+        "genesen": "72",
+        "verstorben": "0",
+        "aktiv": "12"
+      },
+      "Grödig": {
+        "gesamt": "378",
+        "genesen": "362",
+        "verstorben": "8",
+        "aktiv": "8"
+      },
+      "Großgmain": {
+        "gesamt": "127",
+        "genesen": "120",
+        "verstorben": "4",
+        "aktiv": "3"
+      },
+      "Hallwang": {
+        "gesamt": "218",
+        "genesen": "196",
+        "verstorben": "1",
+        "aktiv": "21"
+      },
+      "Henndorf am Wallersee": {
+        "gesamt": "333",
+        "genesen": "323",
+        "verstorben": "1",
+        "aktiv": "9"
+      },
+      "Hintersee": {
+        "gesamt": "77",
+        "genesen": "73",
+        "verstorben": "1",
+        "aktiv": "3"
+      },
+      "Hof bei Salzburg": {
+        "gesamt": "240",
+        "genesen": "224",
+        "verstorben": "9",
+        "aktiv": "7"
+      },
+      "Köstendorf": {
+        "gesamt": "168",
+        "genesen": "154",
+        "verstorben": "4",
+        "aktiv": "10"
+      },
+      "Koppl": {
+        "gesamt": "238",
+        "genesen": "229",
+        "verstorben": "3",
+        "aktiv": "6"
+      },
+      "Lamprechtshausen": {
+        "gesamt": "248",
+        "genesen": "238",
+        "verstorben": "3",
+        "aktiv": "7"
+      },
+      "Mattsee": {
+        "gesamt": "157",
+        "genesen": "134",
+        "verstorben": "0",
+        "aktiv": "23"
+      },
+      "Neumarkt am Wallersee": {
+        "gesamt": "329",
+        "genesen": "310",
+        "verstorben": "0",
+        "aktiv": "19"
+      },
+      "Nußdorf am Haunsberg": {
+        "gesamt": "194",
+        "genesen": "178",
+        "verstorben": "1",
+        "aktiv": "15"
+      },
+      "Oberndorf bei Salzburg": {
+        "gesamt": "380",
+        "genesen": "353",
+        "verstorben": "4",
+        "aktiv": "23"
+      },
+      "Obertrum am See": {
+        "gesamt": "264",
+        "genesen": "246",
+        "verstorben": "4",
+        "aktiv": "14"
+      },
+      "Plainfeld": {
+        "gesamt": "68",
+        "genesen": "66",
+        "verstorben": "0",
+        "aktiv": "2"
+      },
+      "Sankt Georgen bei Salzburg": {
+        "gesamt": "211",
+        "genesen": "180",
+        "verstorben": "2",
+        "aktiv": "29"
+      },
+      "Sankt Gilgen": {
+        "gesamt": "211",
+        "genesen": "202",
+        "verstorben": "3",
+        "aktiv": "6"
+      },
+      "Schleedorf": {
+        "gesamt": "67",
+        "genesen": "64",
+        "verstorben": "0",
+        "aktiv": "3"
+      },
+      "Seeham": {
+        "gesamt": "114",
+        "genesen": "106",
+        "verstorben": "0",
+        "aktiv": "8"
+      },
+      "Straßwalchen": {
+        "gesamt": "633",
+        "genesen": "582",
+        "verstorben": "9",
+        "aktiv": "42"
+      },
+      "Strobl": {
+        "gesamt": "223",
+        "genesen": "219",
+        "verstorben": "2",
+        "aktiv": "2"
+      },
+      "Thalgau": {
+        "gesamt": "391",
+        "genesen": "379",
+        "verstorben": "6",
+        "aktiv": "6"
+      },
+      "Wals-Siezenheim": {
+        "gesamt": "832",
+        "genesen": "795",
+        "verstorben": "5",
+        "aktiv": "32"
+      },
+      "Seekirchen am Wallersee": {
+        "gesamt": "517",
+        "genesen": "495",
+        "verstorben": "0",
+        "aktiv": "22"
+      },
+      "Flachgau - Nicht zugeordnet": {
+        "gesamt": "148",
+        "genesen": "138",
+        "verstorben": "2",
+        "aktiv": "8"
+      }
+    },
+    "Lungau": {
+      "Lungau": {
+        "gesamt": "2008",
+        "genesen": "1925",
+        "verstorben": "36",
+        "aktiv": "47"
+      },
+      "Göriach": {
+        "gesamt": "18",
+        "genesen": "18",
+        "verstorben": "0",
+        "aktiv": "0"
+      },
+      "Lessach": {
+        "gesamt": "51",
+        "genesen": "46",
+        "verstorben": "0",
+        "aktiv": "5"
+      },
+      "Mariapfarr": {
+        "gesamt": "224",
+        "genesen": "213",
+        "verstorben": "6",
+        "aktiv": "5"
+      },
+      "Mauterndorf": {
+        "gesamt": "131",
+        "genesen": "125",
+        "verstorben": "4",
+        "aktiv": "2"
+      },
+      "Muhr": {
+        "gesamt": "39",
+        "genesen": "29",
+        "verstorben": "1",
+        "aktiv": "9"
+      },
+      "Ramingstein": {
+        "gesamt": "93",
+        "genesen": "90",
+        "verstorben": "2",
+        "aktiv": "1"
+      },
+      "Sankt Andrä im Lungau": {
+        "gesamt": "93",
+        "genesen": "93",
+        "verstorben": "0",
+        "aktiv": "0"
+      },
+      "Sankt Margarethen im Lungau": {
+        "gesamt": "88",
+        "genesen": "83",
+        "verstorben": "1",
+        "aktiv": "4"
+      },
+      "Sankt Michael im Lungau": {
+        "gesamt": "376",
+        "genesen": "364",
+        "verstorben": "3",
+        "aktiv": "9"
+      },
+      "Tamsweg": {
+        "gesamt": "489",
+        "genesen": "478",
+        "verstorben": "3",
+        "aktiv": "8"
+      },
+      "Thomatal": {
+        "gesamt": "29",
+        "genesen": "29",
+        "verstorben": "0",
+        "aktiv": "0"
+      },
+      "Tweng": {
+        "gesamt": "16",
+        "genesen": "15",
+        "verstorben": "0",
+        "aktiv": "1"
+      },
+      "Unternberg": {
+        "gesamt": "105",
+        "genesen": "103",
+        "verstorben": "1",
+        "aktiv": "1"
+      },
+      "Weißpriach": {
+        "gesamt": "35",
+        "genesen": "35",
+        "verstorben": "0",
+        "aktiv": "0"
+      },
+      "Zederhaus": {
+        "gesamt": "160",
+        "genesen": "156",
+        "verstorben": "3",
+        "aktiv": "1"
+      },
+      "Lungau - Nicht zugeordnet": {
+        "gesamt": "61",
+        "genesen": "48",
+        "verstorben": "12",
+        "aktiv": "1"
+      }
+    },
+    "Pinzgau": {
+      "Pinzgau": {
+        "gesamt": "5479",
+        "genesen": "5205",
+        "verstorben": "89",
+        "aktiv": "185"
+      },
+      "Bramberg am Wildkogel": {
+        "gesamt": "359",
+        "genesen": "351",
+        "verstorben": "6",
+        "aktiv": "2"
+      },
+      "Bruck an der Glocknerstraße": {
+        "gesamt": "320",
+        "genesen": "307",
+        "verstorben": "5",
+        "aktiv": "8"
+      },
+      "Dienten am Hochkönig": {
+        "gesamt": "66",
+        "genesen": "64",
+        "verstorben": "0",
+        "aktiv": "2"
+      },
+      "Fusch an der Glocknerstraße": {
+        "gesamt": "37",
+        "genesen": "36",
+        "verstorben": "0",
+        "aktiv": "1"
+      },
+      "Hollersbach": {
+        "gesamt": "66",
+        "genesen": "66",
+        "verstorben": "0",
+        "aktiv": "0"
+      },
+      "Kaprun": {
+        "gesamt": "137",
+        "genesen": "132",
+        "verstorben": "2",
+        "aktiv": "3"
+      },
+      "Krimml": {
+        "gesamt": "54",
+        "genesen": "54",
+        "verstorben": "0",
+        "aktiv": "0"
+      },
+      "Lend": {
+        "gesamt": "97",
+        "genesen": "88",
+        "verstorben": "0",
+        "aktiv": "9"
+      },
+      "Leogang": {
+        "gesamt": "206",
+        "genesen": "192",
+        "verstorben": "7",
+        "aktiv": "7"
+      },
+      "Lofer": {
+        "gesamt": "87",
+        "genesen": "78",
+        "verstorben": "1",
+        "aktiv": "8"
+      },
+      "Maishofen": {
+        "gesamt": "245",
+        "genesen": "242",
+        "verstorben": "3",
+        "aktiv": "0"
+      },
+      "Maria Alm am Steinernen Meer": {
+        "gesamt": "82",
+        "genesen": "79",
+        "verstorben": "1",
+        "aktiv": "2"
+      },
+      "Mittersill": {
+        "gesamt": "414",
+        "genesen": "380",
+        "verstorben": "16",
+        "aktiv": "18"
+      },
+      "Neukirchen am Großvenediger": {
+        "gesamt": "162",
+        "genesen": "156",
+        "verstorben": "2",
+        "aktiv": "4"
+      },
+      "Niedernsill": {
+        "gesamt": "141",
+        "genesen": "137",
+        "verstorben": "1",
+        "aktiv": "3"
+      },
+      "Piesendorf": {
+        "gesamt": "243",
+        "genesen": "235",
+        "verstorben": "6",
+        "aktiv": "2"
+      },
+      "Rauris": {
+        "gesamt": "162",
+        "genesen": "148",
+        "verstorben": "3",
+        "aktiv": "11"
+      },
+      "Saalbach-Hinterglemm": {
+        "gesamt": "152",
+        "genesen": "132",
+        "verstorben": "4",
+        "aktiv": "16"
+      },
+      "Saalfelden am Steinernen Meer": {
+        "gesamt": "928",
+        "genesen": "900",
+        "verstorben": "14",
+        "aktiv": "14"
+      },
+      "Sankt Martin bei Lofer": {
+        "gesamt": "52",
+        "genesen": "51",
+        "verstorben": "0",
+        "aktiv": "1"
+      },
+      "Stuhlfelden": {
+        "gesamt": "137",
+        "genesen": "129",
+        "verstorben": "1",
+        "aktiv": "7"
+      },
+      "Taxenbach": {
+        "gesamt": "209",
+        "genesen": "205",
+        "verstorben": "0",
+        "aktiv": "4"
+      },
+      "Unken": {
+        "gesamt": "185",
+        "genesen": "141",
+        "verstorben": "0",
+        "aktiv": "44"
+      },
+      "Uttendorf": {
+        "gesamt": "197",
+        "genesen": "187",
+        "verstorben": "6",
+        "aktiv": "4"
+      },
+      "Viehhofen": {
+        "gesamt": "28",
+        "genesen": "28",
+        "verstorben": "0",
+        "aktiv": "0"
+      },
+      "Wald im Pinzgau": {
+        "gesamt": "82",
+        "genesen": "82",
+        "verstorben": "0",
+        "aktiv": "0"
+      },
+      "Weißbach bei Lofer": {
+        "gesamt": "30",
+        "genesen": "30",
+        "verstorben": "0",
+        "aktiv": "0"
+      },
+      "Zell am See": {
+        "gesamt": "572",
+        "genesen": "546",
+        "verstorben": "11",
+        "aktiv": "15"
+      },
+      "Pinzgau - Nicht zugeordnet": {
+        "gesamt": "29",
+        "genesen": "29",
+        "verstorben": "0",
+        "aktiv": "0"
+      }
+    },
+    "Pongau": {
+      "Pongau": {
+        "gesamt": "7457",
+        "genesen": "6843",
+        "verstorben": "103",
+        "aktiv": "511"
+      },
+      "Altenmarkt im Pongau": {
+        "gesamt": "432",
+        "genesen": "395",
+        "verstorben": "12",
+        "aktiv": "25"
+      },
+      "Bad Hofgastein": {
+        "gesamt": "503",
+        "genesen": "414",
+        "verstorben": "2",
+        "aktiv": "87"
+      },
+      "Bad Gastein": {
+        "gesamt": "255",
+        "genesen": "246",
+        "verstorben": "0",
+        "aktiv": "9"
+      },
+      "Bischofshofen": {
+        "gesamt": "1102",
+        "genesen": "1025",
+        "verstorben": "17",
+        "aktiv": "60"
+      },
+      "Dorfgastein": {
+        "gesamt": "145",
+        "genesen": "131",
+        "verstorben": "0",
+        "aktiv": "14"
+      },
+      "Eben im Pongau": {
+        "gesamt": "216",
+        "genesen": "207",
+        "verstorben": "1",
+        "aktiv": "8"
+      },
+      "Filzmoos": {
+        "gesamt": "137",
+        "genesen": "128",
+        "verstorben": "1",
+        "aktiv": "8"
+      },
+      "Flachau": {
+        "gesamt": "371",
+        "genesen": "347",
+        "verstorben": "3",
+        "aktiv": "21"
+      },
+      "Forstau": {
+        "gesamt": "49",
+        "genesen": "49",
+        "verstorben": "0",
+        "aktiv": "0"
+      },
+      "Goldegg": {
+        "gesamt": "256",
+        "genesen": "231",
+        "verstorben": "4",
+        "aktiv": "21"
+      },
+      "Großarl": {
+        "gesamt": "343",
+        "genesen": "325",
+        "verstorben": "2",
+        "aktiv": "16"
+      },
+      "Hüttau": {
+        "gesamt": "94",
+        "genesen": "90",
+        "verstorben": "1",
+        "aktiv": "3"
+      },
+      "Hüttschlag": {
+        "gesamt": "53",
+        "genesen": "49",
+        "verstorben": "0",
+        "aktiv": "4"
+      },
+      "Kleinarl": {
+        "gesamt": "56",
+        "genesen": "54",
+        "verstorben": "1",
+        "aktiv": "1"
+      },
+      "Mühlbach am Hochkönig": {
+        "gesamt": "97",
+        "genesen": "84",
+        "verstorben": "2",
+        "aktiv": "11"
+      },
+      "Pfarrwerfen": {
+        "gesamt": "230",
+        "genesen": "216",
+        "verstorben": "5",
+        "aktiv": "9"
+      },
+      "Radstadt": {
+        "gesamt": "499",
+        "genesen": "422",
+        "verstorben": "14",
+        "aktiv": "63"
+      },
+      "Sankt Johann im Pongau": {
+        "gesamt": "1129",
+        "genesen": "1051",
+        "verstorben": "6",
+        "aktiv": "72"
+      },
+      "Sankt Martin im Tennengebirge": {
+        "gesamt": "159",
+        "genesen": "152",
+        "verstorben": "1",
+        "aktiv": "6"
+      },
+      "Sankt Veit im Pongau": {
+        "gesamt": "325",
+        "genesen": "287",
+        "verstorben": "5",
+        "aktiv": "33"
+      },
+      "Schwarzach im Pongau": {
+        "gesamt": "353",
+        "genesen": "334",
+        "verstorben": "13",
+        "aktiv": "6"
+      },
+      "Untertauern": {
+        "gesamt": "37",
+        "genesen": "33",
+        "verstorben": "1",
+        "aktiv": "3"
+      },
+      "Wagrain": {
+        "gesamt": "215",
+        "genesen": "200",
+        "verstorben": "0",
+        "aktiv": "15"
+      },
+      "Werfen": {
+        "gesamt": "264",
+        "genesen": "246",
+        "verstorben": "4",
+        "aktiv": "14"
+      },
+      "Werfenweng": {
+        "gesamt": "67",
+        "genesen": "65",
+        "verstorben": "0",
+        "aktiv": "2"
+      },
+      "Pongau - Nicht zugeordnet": {
+        "gesamt": "70",
+        "genesen": "62",
+        "verstorben": "8",
+        "aktiv": "0"
+      }
+    },
+    "Salzburg Stadt": {
+      "Salzburg Stadt": {
+        "gesamt": "8369",
+        "genesen": "7910",
+        "verstorben": "113",
+        "aktiv": "346"
+      },
+      "Stadt Salzburg - Nicht zugeordnet": {
+        "gesamt": "204",
+        "genesen": "183",
+        "verstorben": "14",
+        "aktiv": "7"
+      }
+    },
+    "Tennengau": {
+      "Tennengau": {
+        "gesamt": "5201",
+        "genesen": "4972",
+        "verstorben": "55",
+        "aktiv": "174"
+      },
+      "Abtenau": {
+        "gesamt": "629",
+        "genesen": "589",
+        "verstorben": "4",
+        "aktiv": "36"
+      },
+      "Adnet": {
+        "gesamt": "279",
+        "genesen": "271",
+        "verstorben": "3",
+        "aktiv": "5"
+      },
+      "Annaberg-Lungötz": {
+        "gesamt": "254",
+        "genesen": "248",
+        "verstorben": "2",
+        "aktiv": "4"
+      },
+      "Golling an der Salzach": {
+        "gesamt": "397",
+        "genesen": "386",
+        "verstorben": "3",
+        "aktiv": "8"
+      },
+      "Hallein": {
+        "gesamt": "1415",
+        "genesen": "1337",
+        "verstorben": "12",
+        "aktiv": "66"
+      },
+      "Krispl": {
+        "gesamt": "79",
+        "genesen": "76",
+        "verstorben": "1",
+        "aktiv": "2"
+      },
+      "Kuchl": {
+        "gesamt": "872",
+        "genesen": "855",
+        "verstorben": "9",
+        "aktiv": "8"
+      },
+      "Oberalm": {
+        "gesamt": "310",
+        "genesen": "285",
+        "verstorben": "15",
+        "aktiv": "10"
+      },
+      "Puch bei Hallein": {
+        "gesamt": "339",
+        "genesen": "319",
+        "verstorben": "4",
+        "aktiv": "16"
+      },
+      "Rußbach am Pass Gschütt": {
+        "gesamt": "34",
+        "genesen": "28",
+        "verstorben": "0",
+        "aktiv": "6"
+      },
+      "Sankt Koloman": {
+        "gesamt": "207",
+        "genesen": "204",
+        "verstorben": "1",
+        "aktiv": "2"
+      },
+      "Scheffau am Tennengebirge": {
+        "gesamt": "140",
+        "genesen": "135",
+        "verstorben": "0",
+        "aktiv": "5"
+      },
+      "Bad Vigaun": {
+        "gesamt": "174",
+        "genesen": "170",
+        "verstorben": "0",
+        "aktiv": "4"
+      },
+      "Tennengau - Nicht zugeordnet": {
+        "gesamt": "72",
+        "genesen": "69",
+        "verstorben": "1",
+        "aktiv": "2"
+      }
+    }
+  }
+}
